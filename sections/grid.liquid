@@ -177,6 +177,7 @@
         // Handle add to cart
       addToCartButton.onclick = function() {
         console.log(product);
+        addToCart(product);
       };
 
       popup.style.display = 'block';
@@ -202,6 +203,44 @@
         if (variant) {
           popupPrice.textContent = (variant.price / 100).toFixed(2); // Convert cents to dollars
         }
+      }
+    }
+
+    function addToCart(product) {
+      var selectedColor = document.querySelector('.color-option.selected');
+      var selectedSize = popupSizes.value;
+      console.log(selectedColor);
+      console.log(selectedSize);
+      if (selectedColor && selectedSize) {
+        var variant = product.variants.find(variant => 
+          variant.option1 === selectedSize && variant.option2 === selectedColor.getAttribute('data-color')
+        );
+        if (variant) {
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', '/cart/add.js', true);
+          xhr.setRequestHeader('Content-Type', 'application/json');
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              // Open the cart notification
+              var cartNotification = document.querySelector('cart-notification');
+              if (cartNotification) {
+                cartNotification.open();
+              }
+              popup.style.display = 'none';
+            } else if (xhr.readyState === 4) {
+              console.error('Error:', xhr.responseText);
+              alert('Failed to add to cart.');
+            }
+          };
+          xhr.send(JSON.stringify({
+            id: variant.id,
+            quantity: 1
+          }));
+        } else {
+          alert('Please select a valid variant.');
+        }
+      } else {
+        alert('Please select a color and size.');
       }
     }
   });
