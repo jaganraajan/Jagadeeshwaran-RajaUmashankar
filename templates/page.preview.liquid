@@ -21,5 +21,14 @@
   </div>
   {% section 'banner' %}
   {% section 'grid' %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var headerElement = document.querySelector('.shopify-section.shopify-section-group-header-group.section-header');
+      if (headerElement) {
+        headerElement.remove();
+      }
+    });
+  </script>
 </body>
 </html>
