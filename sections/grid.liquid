@@ -54,6 +54,7 @@
       </select>
     </div>
     <p id="popup-product-price"></p>
+    <button id="add-to-cart-button">Add to Cart</button>
   </div>
 </div>
 
@@ -113,6 +114,18 @@
   .color-option.selected {
     border: 2px solid #000;
   }
+
+  #add-to-cart-button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  #add-to-cart-button:hover {
+    background-color: #333;
+  }
 </style>
 
 <script>
@@ -124,6 +137,7 @@
     var popupSizes = document.getElementById('popup-product-sizes');
     var popupPrice = document.getElementById('popup-product-price');
     var popupClose = document.querySelector('.product-popup-close');
+    var addToCartButton = document.getElementById('add-to-cart-button');
 
     window.showProductPopup = function(product) {
       popupTitle.textContent = product.title;
@@ -158,6 +172,12 @@
       popupSizes.addEventListener('change', function() {
         updatePrice(product);
       });
+
+
+        // Handle add to cart
+      addToCartButton.onclick = function() {
+        console.log(product);
+      };
 
       popup.style.display = 'block';
     };
