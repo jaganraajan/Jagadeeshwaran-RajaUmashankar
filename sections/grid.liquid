@@ -28,7 +28,7 @@
 {% if collection %}
   <div class="product-grid">
     {% for product in collection.products %}
-      <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%" data-product-title="{{ product.title }}" data-product-description="{{ product.description }}" data-product-price="{{ product.price | money }}">
+      <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%" onclick="showProductPopup({{ product | json | escape }});">
         <img width=920 height= 943 src={{ product.featured_media | image_url: width: 920, height: 943 }} alt="{{ product.title }}">
       </div>
     {% endfor %}
@@ -111,19 +111,14 @@
     var popupPrice = document.getElementById('popup-product-price');
     var popupClose = document.querySelector('.product-popup-close');
 
-    productItems.forEach(function(item) {
-      item.addEventListener('click', function() {
-        var title = item.getAttribute('data-product-title');
-        var description = item.getAttribute('data-product-description');
-        var price = item.getAttribute('data-product-price');
-
-        popupTitle.textContent = title;
-        popupDescription.textContent = description;
-        popupPrice.textContent = price;
-
-        popup.style.display = 'block';
-      });
-    });
+    window.showProductPopup = function(product) {
+      console.log(product);
+      popupTitle.textContent = product.title;
+      popupDescription.textContent = product.description;
+      popupPrice.textContent = (product.price / 100).toFixed(2); // Convert cents to dollars
+      popup.style.display = 'block';
+    };
+     
 
     popupClose.addEventListener('click', function() {
       popup.style.display = 'none';
