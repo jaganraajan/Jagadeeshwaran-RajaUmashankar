@@ -29,7 +29,7 @@
   <div class="product-grid">
     {% for product in collection.products %}
       <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%" onclick="showProductPopup({{ product | json | escape }});">
-        <img width=920 height= 943 src={{ product.featured_media | image_url: width: 920, height: 943 }} alt="{{ product.title }}">
+        <img width=920 height=943 src="{{ product.featured_media | image_url: width: 920, height: 943 }}" alt="{{ product.title }}">
       </div>
     {% endfor %}
   </div>
@@ -43,6 +43,16 @@
     <span class="product-popup-close">&times;</span>
     <h2 id="popup-product-title"></h2>
     <p id="popup-product-description"></p>
+    <div id="popup-product-options">
+      <div id="popup-product-colors"></div>
+      <select id="popup-product-sizes">
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+    </div>
     <p id="popup-product-price"></p>
   </div>
 </div>
@@ -60,14 +70,6 @@
   .product-grid-item img {
     width: 100%;
     height: auto;
-  }
-  .product-grid-item h2 {
-    font-size: 16px;
-    margin: 10px 0;
-  }
-  .product-grid-item p {
-    font-size: 14px;
-    color: #333;
   }
   .product-popup {
     display: none;
@@ -100,25 +102,62 @@
     text-decoration: none;
     cursor: pointer;
   }
+  .color-option {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border: 1px solid #000;
+    cursor: pointer;
+  }
+  .color-option.selected {
+    border: 2px solid #000;
+  }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var productItems = document.querySelectorAll('.product-grid-item');
     var popup = document.getElementById('product-popup');
     var popupTitle = document.getElementById('popup-product-title');
     var popupDescription = document.getElementById('popup-product-description');
+    var popupColors = document.getElementById('popup-product-colors');
+    var popupSizes = document.getElementById('popup-product-sizes');
     var popupPrice = document.getElementById('popup-product-price');
     var popupClose = document.querySelector('.product-popup-close');
 
     window.showProductPopup = function(product) {
-      console.log(product);
       popupTitle.textContent = product.title;
       popupDescription.textContent = product.description;
       popupPrice.textContent = (product.price / 100).toFixed(2); // Convert cents to dollars
+
+      // Populate color options
+      popupColors.innerHTML = '';
+      var colors = [...new Set(product.variants.map(variant => variant.option2))];
+      colors.slice(0, 2).forEach(function(color) {
+        var colorOption = document.createElement('div');
+        colorOption.className = 'color-option';
+        colorOption.style.backgroundColor = color.toLowerCase();
+        colorOption.setAttribute('data-color', color);
+        popupColors.appendChild(colorOption);
+      });
+
+      // Handle color selection
+      var colorOptions = document.querySelectorAll('.color-option');
+      colorOptions.forEach(function(option) {
+        option.addEventListener('click', function() {
+          colorOptions.forEach(function(opt) { opt.classList.remove('selected'); });
+          option.classList.add('selected');
+          updatePrice(product);
+        });
+      });
+
+      // Handle size selection
+      popupSizes.addEventListener('change', function() {
+        updatePrice(product);
+      });
+
       popup.style.display = 'block';
     };
-     
 
     popupClose.addEventListener('click', function() {
       popup.style.display = 'none';
@@ -129,5 +168,18 @@
         popup.style.display = 'none';
       }
     });
+
+    function updatePrice(product) {
+      var selectedColor = document.querySelector('.color-option.selected');
+      var selectedSize = popupSizes.value;
+      if (selectedColor && selectedSize) {
+        var variant = product.variants.find(variant => 
+          variant.option1 === selectedSize && variant.option2 === selectedColor.getAttribute('data-color')
+        );
+        if (variant) {
+          popupPrice.textContent = (variant.price / 100).toFixed(2); // Convert cents to dollars
+        }
+      }
+    }
   });
 </script>
