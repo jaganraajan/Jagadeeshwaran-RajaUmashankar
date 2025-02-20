@@ -30,9 +30,6 @@
     {% for product in collection.products %}
       <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%" data-product-title="{{ product.title }}" data-product-description="{{ product.description }}" data-product-price="{{ product.price | money }}">
         <img width=920 height= 943 src={{ product.featured_media | image_url: width: 920, height: 943 }} alt="{{ product.title }}">
-        <p>{{ product.price | money }}</p>
-        <h2>{{ product.title }}</h2>
-        
       </div>
     {% endfor %}
   </div>
@@ -140,14 +137,16 @@
 
     productItems.forEach(function(item) {
       item.addEventListener('click', function() {
-        var product = JSON.parse(item.getAttribute('data-product'));
-        popupTitle.textContent = product.title;
-        popupDescription.textContent = product.description;
-        popupPrice.textContent = product.price / 100; // Convert cents to dollars
+        var title = item.getAttribute('data-product-title');
+        var description = item.getAttribute('data-product-description');
+        var price = item.getAttribute('data-product-price');
+        popupTitle.textContent = title;
+        popupDescription.textContent = description;
+        popupPrice.textContent = price / 100; // Convert cents to dollars
 
         // Populate color options
         popupColors.innerHTML = '';
-        var colors = product.options.find(option => option.name === 'Color');
+        var colors = [black, white];
         if (colors) {
           colors.forEach(function(color) {
             var colorOption = document.createElement('div');
@@ -164,13 +163,13 @@
           option.addEventListener('click', function() {
             colorOptions.forEach(function(opt) { opt.classList.remove('selected'); });
             option.classList.add('selected');
-            updatePrice(product);
+            updatePrice();
           });
         });
 
         // Handle size selection
         popupSizes.addEventListener('change', function() {
-          updatePrice(product);
+          updatePrice();
         });
 
         popup.style.display = 'block';
@@ -187,17 +186,10 @@
       }
     });
 
-    function updatePrice(product) {
+    function updatePrice() {
       var selectedColor = document.querySelector('.color-option.selected');
       var selectedSize = popupSizes.value;
-      if (selectedColor && selectedSize) {
-        var variant = product.variants.find(variant => 
-          variant.option1 === selectedSize && variant.option2 === selectedColor.getAttribute('data-color')
-        );
-        if (variant) {
-          popupPrice.textContent = variant.price / 100; // Convert cents to dollars
-        }
-      }
+      console.log(selectedColor, selectedSize);
     }
   });
 </script>
