@@ -138,7 +138,9 @@
         colorOption.className = 'color-option';
         colorOption.style.backgroundColor = color.toLowerCase();
         colorOption.setAttribute('data-color', color);
-        colorOption.value = color;
+        var colorName = document.createElement('span');
+        colorName.textContent = color;
+        colorOption.appendChild(colorName);
         popupColors.appendChild(colorOption);
       });
 
