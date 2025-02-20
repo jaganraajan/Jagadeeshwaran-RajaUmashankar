@@ -142,7 +142,7 @@
     var addToCartButton = document.getElementById('add-to-cart-button');
 
     window.showProductPopup = function(product) {
-      popupImage.src = product.featured_media ? product.featured_media.image_url : '';
+      popupImage.src = product.featured_image;
       popupImage.alt = product.title;
       popupTitle.textContent = product.title;
       popupDescription.textContent = product.description;
