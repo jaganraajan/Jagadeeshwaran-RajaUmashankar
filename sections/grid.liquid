@@ -12,13 +12,13 @@
       "type": "number",
       "id": "products_per_row",
       "label": "Products per row",
-      "default": 4
+      "default": 3
     },
     {
       "type": "number",
       "id": "products_limit",
       "label": "Number of products to show",
-      "default": 8
+      "default": 6
     }
   ]
 }
@@ -29,7 +29,7 @@
   <div class="product-grid">
     {% for product in collection.products %}
       <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%" data-product-title="{{ product.title }}" data-product-description="{{ product.description }}" data-product-price="{{ product.price | money }}">
-        <img width=165 height= 165 src={{ product.featured_media | image_url: width: 165, height: 165 }} alt="{{ product.title }}">
+        <img width=920 height= 943 src={{ product.featured_media | image_url: width: 920, height: 943 }} alt="{{ product.title }}">
         <h2>{{ product.title }}</h2>
         <p>{{ product.price | money }}</p>
       </div>
