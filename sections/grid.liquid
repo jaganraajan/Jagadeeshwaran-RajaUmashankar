@@ -1,5 +1,65 @@
-<div class="grid">
-  <div class="grid-content">
-    <h1>Grid heading</h1>
-    </div>
-</div>
+<!-- filepath: sections/grid.liquid -->
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "number",
+      "id": "products_per_row",
+      "label": "Products per row",
+      "default": 4
+    },
+    {
+      "type": "number",
+      "id": "products_limit",
+      "label": "Number of products to show",
+      "default": 8
+    }
+  ]
+}
+{% endschema %}
+
+{% assign collection = collections[section.settings.collection] %}
+{% if collection %}
+  <div class="product-grid">
+    {% for product in collection.products | limit: section.settings.products_limit %}
+      <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <h2>{{ product.title }}</h2>
+          <p>{{ product.price | money }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No products found in this collection.</p>
+{% endif %}
+
+<style>
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .product-grid-item {
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  .product-grid-item img {
+    width: 100%;
+    height: auto;
+  }
+  .product-grid-item h2 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  .product-grid-item p {
+    font-size: 14px;
+    color: #333;
+  }
+</style>
