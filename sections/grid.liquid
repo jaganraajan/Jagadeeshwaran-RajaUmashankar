@@ -27,10 +27,10 @@
 {% assign collection = collections[section.settings.collection] %}
 {% if collection %}
   <div class="product-grid">
-    {% for product in collection.products | limit: section.settings.products_limit %}
+    {% for product in collection.products %}
       <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%">
         <a href="{{ product.url }}">
-          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <img width=100px height= 100px src="{{ product.featured_image | image_url: 'medium' }}" alt="{{ product.title }}">
           <h2>{{ product.title }}</h2>
           <p>{{ product.price | money }}</p>
         </a>
