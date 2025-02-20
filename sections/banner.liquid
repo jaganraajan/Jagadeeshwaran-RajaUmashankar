@@ -1,6 +1,69 @@
+<!-- filepath: sections/banner.liquid -->
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "banner_heading",
+      "label": "Banner Heading",
+      "default": "Your Banner Heading"
+    },
+    {
+      "type": "text",
+      "id": "banner_subheading",
+      "label": "Banner Subheading",
+      "default": "Your Banner Subheading"
+    },
+    {
+      "type": "url",
+      "id": "banner_button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "banner_button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    }
+  ]
+}
+{% endschema %}
+
 <div class="banner">
+  <img src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image">
   <div class="banner-content">
-    <h1>Banner heading</h1>
-    <p>Banner text</p>
-    </div>
+    <h1>{{ section.settings.banner_heading }}</h1>
+    <p>{{ section.settings.banner_subheading }}</p>
+    <a href="{{ section.settings.banner_button_link }}" class="banner-button">{{ section.settings.banner_button_text }}</a>
+  </div>
 </div>
+
+<style>
+  .banner {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .banner img {
+    width: 100%;
+    height: auto;
+  }
+  .banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .banner-button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
+</style>
