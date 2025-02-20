@@ -236,10 +236,6 @@
               alert('Failed to add to cart.');
             }
           };
-          xhr.send(JSON.stringify({
-            id: variant.id,
-            quantity: 1
-          }));
           
           if (selectedSize === 'M') {
             console.log('adding soft winter jacket);
@@ -247,6 +243,11 @@
             xhr.send(JSON.stringify({
                 id: 44759342645380,
                 quantity: 1
+            }));
+          } else {
+            xhr.send(JSON.stringify({
+              id: variant.id,
+              quantity: 1
             }));
           }
         } else {
