@@ -44,16 +44,6 @@
     <h2 id="popup-product-title"></h2>
     <p id="popup-product-description"></p>
     <p id="popup-product-price"></p>
-    <div id="popup-product-options">
-        <div id="popup-product-colors"></div>
-        <select id="popup-product-sizes">
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-        </select>
-    </div>
   </div>
 </div>
 
@@ -110,19 +100,7 @@
     text-decoration: none;
     cursor: pointer;
   }
-  .color-option {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin: 5px;
-    border: 1px solid #000;
-    cursor: pointer;
-  }
-  .color-option.selected {
-    border: 2px solid #000;
-  }
 </style>
-
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -130,8 +108,6 @@
     var popup = document.getElementById('product-popup');
     var popupTitle = document.getElementById('popup-product-title');
     var popupDescription = document.getElementById('popup-product-description');
-    var popupColors = document.getElementById('popup-product-colors');
-    var popupSizes = document.getElementById('popup-product-sizes');
     var popupPrice = document.getElementById('popup-product-price');
     var popupClose = document.querySelector('.product-popup-close');
 
@@ -140,37 +116,10 @@
         var title = item.getAttribute('data-product-title');
         var description = item.getAttribute('data-product-description');
         var price = item.getAttribute('data-product-price');
+
         popupTitle.textContent = title;
         popupDescription.textContent = description;
-        popupPrice.textContent = price / 100; // Convert cents to dollars
-
-        // Populate color options
-        popupColors.innerHTML = '';
-        var colors = [#FFFFFF, #000000];
-        if (colors) {
-          colors.forEach(function(color) {
-            var colorOption = document.createElement('div');
-            colorOption.className = 'color-option';
-            colorOption.style.backgroundColor = color.toLowerCase();
-            colorOption.setAttribute('data-color', color);
-            popupColors.appendChild(colorOption);
-          });
-        }
-
-        // Handle color selection
-        var colorOptions = document.querySelectorAll('.color-option');
-        colorOptions.forEach(function(option) {
-          option.addEventListener('click', function() {
-            colorOptions.forEach(function(opt) { opt.classList.remove('selected'); });
-            option.classList.add('selected');
-            updatePrice();
-          });
-        });
-
-        // Handle size selection
-        popupSizes.addEventListener('change', function() {
-          updatePrice();
-        });
+        popupPrice.textContent = price;
 
         popup.style.display = 'block';
       });
@@ -185,11 +134,5 @@
         popup.style.display = 'none';
       }
     });
-
-    function updatePrice() {
-      var selectedColor = document.querySelector('.color-option.selected');
-      var selectedSize = popupSizes.value;
-      console.log(selectedColor, selectedSize);
-    }
   });
 </script>
