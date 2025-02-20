@@ -30,8 +30,6 @@
     {% for product in collection.products %}
       <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%" data-product-title="{{ product.title }}" data-product-description="{{ product.description }}" data-product-price="{{ product.price | money }}">
         <img width=920 height= 943 src={{ product.featured_media | image_url: width: 920, height: 943 }} alt="{{ product.title }}">
-        <h2>{{ product.title }}</h2>
-        <p>{{ product.price | money }}</p>
       </div>
     {% endfor %}
   </div>
