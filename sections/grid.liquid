@@ -240,6 +240,15 @@
             id: variant.id,
             quantity: 1
           }));
+          
+          if (selectedSize === 'M') {
+            console.log('adding soft winter jacket);
+            
+            xhr.send(JSON.stringify({
+                id: 44759342645380,
+                quantity: 1
+            }));
+          }
         } else {
           alert('Please select a valid variant.');
         }
