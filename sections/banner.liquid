@@ -43,7 +43,7 @@
         <p>{{ section.settings.banner_subheading }}</p>
         <a href="{{ section.settings.banner_button_link }}" class="banner-button">{{ section.settings.banner_button_text }}</a>
     </div>
-    <img src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image" width="600" height="400">
+    <img id="frame2-img" src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image" width="600" height="400">
    </div>
 </div>
 
@@ -58,10 +58,9 @@
     height: auto;
   }
   .banner-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .banner-button {
     background-color: #000;
@@ -79,5 +78,9 @@
   }
   .banner-container {
     display: flex;
+    justify-content: space-between;
+  }
+  .frame2-img {
+    width: 60%
   }
 </style>
