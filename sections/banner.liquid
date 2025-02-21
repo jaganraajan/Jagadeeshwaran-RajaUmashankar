@@ -12,7 +12,7 @@
       "type": "text",
       "id": "banner_heading",
       "label": "Banner Heading",
-      "default": "Your Banner Heading"
+      "default": "The Gift Guide"
     },
     {
       "type": "text",
@@ -29,20 +29,22 @@
       "type": "text",
       "id": "banner_button_text",
       "label": "Button Text",
-      "default": "Learn More"
+      "default": "Shop Now"
     }
   ]
 }
 {% endschema %}
 
 <div class="banner">
-  <img src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image" width="600" height="400">
-  <img src="{{ 'Frame2.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
-  <div class="banner-content">
-    <h1>{{ section.settings.banner_heading }}</h1>
-    <p>{{ section.settings.banner_subheading }}</p>
-    <a href="{{ section.settings.banner_button_link }}" class="banner-button">{{ section.settings.banner_button_text }}</a>
-  </div>
+<img src="{{ 'Frame2.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
+  <div class="banner-container">
+    <div class="banner-content">
+        <h1>{{ section.settings.banner_heading }}</h1>
+        <p>{{ section.settings.banner_subheading }}</p>
+        <a href="{{ section.settings.banner_button_link }}" class="banner-button">{{ section.settings.banner_button_text }}</a>
+    </div>
+    <img src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image" width="600" height="400">
+   </div>
 </div>
 
 <style>
@@ -65,6 +67,17 @@
     background-color: #000;
     color: #fff;
     padding: 10px 20px;
-    text-decoration: none;
+    text-decoration: none;position: relative;
+  }
+  .banner-button::after {
+    content: '→';
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  .banner-button:hover {
+    background-color: #333;
+  }
+  .banner-container {
+    display: flex;
   }
 </style>
