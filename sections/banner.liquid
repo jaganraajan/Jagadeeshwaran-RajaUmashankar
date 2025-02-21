@@ -36,14 +36,14 @@
 {% endschema %}
 
 <div class="banner">
-<img src="{{ 'Frame2.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
+<img id="frame2-img" src="{{ 'Frame2.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
   <div class="banner-container">
     <div class="banner-content">
         <h1>{{ section.settings.banner_heading }}</h1>
         <p>{{ section.settings.banner_subheading }}</p>
         <a href="{{ section.settings.banner_button_link }}" class="banner-button">{{ section.settings.banner_button_text }}</a>
     </div>
-    <img id="frame2-img" src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image" width="600" height="400">
+    <img id="frame1-img" src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image" width="600" height="400">
    </div>
 </div>
 
@@ -53,7 +53,7 @@
     text-align: center;
     color: white;
   }
-  .banner img {
+  .frame2-img {
     width: 100%;
     height: auto;
   }
@@ -80,7 +80,7 @@
     display: flex;
     justify-content: space-between;
   }
-  .frame2-img {
+  .frame1-img {
     width: 60%
   }
 </style>
