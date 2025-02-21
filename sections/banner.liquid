@@ -4,6 +4,24 @@
   "name": "Banner",
   "settings": [
     {
+        "type": "text",
+        "id": "company_name",
+        "label": "Top Bar Company Name",
+        "default": "TISSO VISION"
+      },
+      {
+        "type": "text",
+        "id": "top_bar_announcement",
+        "label": "Top Bar Announcement",
+        "default": "Find the ideal gift for your loved ones"
+      },
+      {
+        "type": "text",
+        "id": "top_bar_button_text",
+        "label": "Top Bar Button Text",
+        "default": "CHOOSE GIFT"
+      },
+    {
       "type": "image_picker",
       "id": "banner_image",
       "label": "Banner Image"
@@ -37,9 +55,9 @@
 
 <div class="banner">
 <div class="top-bar">
-   <div class="top-bar-company-name">Tisso Vision</div>
-   <div class="top-bar-announcement"> Find the ideal gift for your loved ones</div>
-    <a href="{{ section.settings.banner_button_link }}" class="banner-button">{{ section.settings.banner_button_text }}</a>
+   <div class="top-bar-company-name">{{ section.settings.company_name }}</div>
+   <div class="top-bar-announcement"> {{ section.settings.top_bar_announcement }}</div>
+    <a href="{{ section.settings.banner_button_link }}" class="top-bar-button">{{ section.settings.top_bar_button_text }}</a>
 </div>
 
 <img id="frame2-img" src="{{ 'Frame2.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
@@ -55,24 +73,20 @@
 
 <style>
   .top-bar {
-    height: 170.67px;
     background: #F5F5F5;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding: 26.6667px 133.333px;
-    gap: 720px;
     }
     .top-bar .top-bar-company-name {
         width: 403.85px;
         height: 50.67px;
     }
     .top-bar .top-bar-announcement {
-        font-family: 'Jost';
+        color: black;
         font-style: normal;
-        font-weight: 400;
-        font-size: 42.6667px;
+        font-size: 11.6667px;
         line-height: 36px;
         /* identical to box height, or 84% */
         display: flex;
@@ -80,7 +94,7 @@
         text-align: center;
     }
 
-    .top-bar.banner-button {
+    .top-bar-button {
         background: #FFF544;
         border-radius: 4px;
         font-family: 'Jost';
@@ -120,6 +134,7 @@
     padding: 10px 20px;
     text-decoration: none;position: relative;
   }
+  .top-bar-button::after,
   .banner-button::after {
     content: '→';
     margin-left: 10px;
