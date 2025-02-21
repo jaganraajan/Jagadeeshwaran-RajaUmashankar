@@ -143,6 +143,9 @@
         "type": "banner",
         "custom_css": [],
         "settings": {
+          "company_name": "TISSO VISION",
+          "top_bar_announcement": "Find the ideal gift for your loved ones",
+          "top_bar_button_text": "CHOOSE GIFT",
           "banner_heading": "The Gift Guide",
           "banner_subheading": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
           "banner_button_link": "",
@@ -153,8 +156,8 @@
         "type": "grid",
         "settings": {
           "collection": "preview-collection",
-          "products_per_row": 4,
-          "products_limit": 8
+          "products_per_row": 3,
+          "products_limit": 6
         }
       }
     },
