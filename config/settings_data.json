@@ -141,11 +141,15 @@
       },
       "banner": {
         "type": "banner",
+        "custom_css": [
+          ".banner-content p {color: black; text-align: left;}",
+          ".banner-container {padding-left: 5rem;}"
+        ],
         "settings": {
-          "banner_heading": "Your Banner Heading",
-          "banner_subheading": "Your Banner Subheading",
+          "banner_heading": "The Gift Guide",
+          "banner_subheading": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
           "banner_button_link": "",
-          "banner_button_text": "Learn More"
+          "banner_button_text": "Shop Now"
         }
       },
       "grid": {
