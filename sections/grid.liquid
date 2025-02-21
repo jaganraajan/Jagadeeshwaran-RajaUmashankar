@@ -26,13 +26,18 @@
 
 {% assign collection = collections[section.settings.collection] %}
 {% if collection %}
-  <div class="product-grid">
-    {% for product in collection.products %}
-      <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%" onclick="showProductPopup({{ product | json | escape }});">
-        <img width=920 height=943 src="{{ product.featured_media | image_url: width: 920, height: 943 }}" alt="{{ product.title }}">
+    <div>
+        <div>Tisso Vison in the wild</div>
+        <div class="product-grid">
+        {% for product in collection.products %}
+          <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%" onclick="showProductPopup({{ product | json | escape }});">
+            <img width=920 height=943 src="{{ product.featured_media | image_url: width: 920, height: 943 }}" alt="{{ product.title }}">
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
-  </div>
+    </div>
+
+  
 {% else %}
   <p>No products were found in this collection.</p>
 {% endif %}
