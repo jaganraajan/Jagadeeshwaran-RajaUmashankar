@@ -36,6 +36,12 @@
 {% endschema %}
 
 <div class="banner">
+<div class="top-bar">
+   <h1>Tisso Vision</h1>
+   <h3> Find the ideal gift for your loved ones</h3>
+    <a href="{{ section.settings.banner_button_link }}" class="banner-button">{{ section.settings.banner_button_text }}</a>
+</div>
+
 <img id="frame2-img" src="{{ 'Frame2.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
   <div class="banner-container">
     <div class="banner-content">
@@ -87,5 +93,13 @@
   }
   #frame1-img {
     width: 60%
+  }
+  .top-bar {
+    color: rgb(var(--color-foreground));
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
   }
 </style>
