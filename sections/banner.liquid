@@ -48,7 +48,13 @@
       "id": "banner_button_text",
       "label": "Button Text",
       "default": "Shop Now"
-    }
+    },
+    {
+        "type": "text",
+        "id": "bottom_banner_text",
+        "label": "Bottom Banner Text",
+        "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+      }
   ]
 }
 {% endschema %}
@@ -69,9 +75,13 @@
     </div>
     <img id="frame1-img" src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image" width="600" height="400">
    </div>
+   <div class="banner-bottom-bar">
+    <div class="banner-bottom-announcement">{{ section.settings.bottom_banner_text }}</div>
+   </div>
 </div>
 
 <style>
+  .banner-bottom-bar,
   .top-bar {
     background: #F5F5F5;
     display: flex;
@@ -81,12 +91,12 @@
 
     }
     .top-bar .top-bar-company-name {
-        width: 403.85px;
-        height: 50.67px;
         color: black;
-    font-weight: 600;
+        font-weight: 600;
     }
-    .top-bar .top-bar-announcement {
+    
+    .banner-bottom-announcement,
+    .top-bar-announcement {
         color: black;
         font-style: normal;
         font-size: 11.6667px;
