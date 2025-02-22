@@ -123,9 +123,13 @@
     margin: 5px;
     border: 1px solid #000;
     cursor: pointer;
+  }.color-box {
+    width: 10%;
+    height: 100%;
   }
-  .color-option.selected {
-    border: 2px solid #000;
+  .color-text {
+    width: 90%;
+    text-align: center;
   }
 
   .product-details-container{
@@ -168,13 +172,17 @@
       popupColors.innerHTML = '';
       var colors = [...new Set(product.variants.map(variant => variant.option2))];
       colors.slice(0, 2).forEach(function(color) {
-        var colorOption = document.createElement('div');
+        var colorOption = document.createElement('button');
         colorOption.className = 'color-option';
-        colorOption.style.backgroundColor = color.toLowerCase();
         colorOption.setAttribute('data-color', color);
-        var colorName = document.createElement('span');
-        colorName.textContent = color;
-        colorOption.appendChild(colorName);
+        var colorBox = document.createElement('span');
+        colorBox.className = 'color-box';
+        colorBox.style.backgroundColor = color.toLowerCase();
+        var colorText = document.createElement('span');
+        colorText.className = 'color-text';
+        colorText.textContent = color;
+        colorOption.appendChild(colorBox);
+        colorOption.appendChild(colorText);
         popupColors.appendChild(colorOption);
       });
 
