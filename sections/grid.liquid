@@ -62,7 +62,6 @@
       <div id="popup-product-colors"></div>
       <h2>Size</h2>
       <select id="popup-product-sizes">
-        <option value="" disabled selected>Choose your size</option>
         <option value="XS">XS</option>
         <option value="S">S</option>
         <option value="M">M</option>
@@ -141,34 +140,29 @@
     text-align: center;
   }
 
-  #popup-product-sizes {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    appearance: none;
-    background: url('data:image/svg+xml;utf8,<svg fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>') no-repeat right 10px center;
-    background-color: #fff;
-    background-size: 16px;
-    cursor: pointer;
-  }
-  #popup-product-sizes.open {
-    background: url('data:image/svg+xml;utf8,<svg fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M19 15l-7-7-7 7"/></svg>') no-repeat right 10px center;
-    background-color: #fff;
-    background-size: 16px;
-  }
-
   .product-details-container{
     display: flex;
   }
 
-  #add-to-cart-button {
+ #add-to-cart-button {
+    width: 100%;
     background-color: #000;
     color: #fff;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     margin-top: 20px;
+    position: relative;
+    text-align: left;
+    padding-right: 40px; /* Space for the arrow */
+  }
+  #add-to-cart-button::after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
   }
   #add-to-cart-button:hover {
     background-color: #333;
@@ -247,11 +241,6 @@
       }
     });
 
-    // Handle dropdown arrow direction
-    popupSizes.addEventListener('click', function() {
-        popupSizes.classList.toggle('open');
-      });
-    
     function updatePrice(product) {
       var selectedColor = document.querySelector('.color-option.selected');
       var selectedSize = popupSizes.value;
