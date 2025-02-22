@@ -181,7 +181,7 @@
       colors.slice(0, 2).forEach(function(color) {
         var colorOption = document.createElement('button');
         colorOption.className = 'color-option';
-        colorOption.setAttribute('data-color', color);
+        colorOption.setAttribute('style', 'background-color: ' + color.toLowerCase());
         var colorBox = document.createElement('span');
         colorBox.className = 'color-box';
         colorBox.style.backgroundColor = color.toLowerCase();
