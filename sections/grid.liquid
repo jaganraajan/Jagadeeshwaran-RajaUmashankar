@@ -47,9 +47,16 @@
 <div id="product-popup" class="product-popup">
   <div class="product-popup-content">
     <span class="product-popup-close">&times;</span>
-    <img id="popup-product-image" width=300 height=320 alt="">
-    <h2 id="popup-product-title"></h2>
-    <p id="popup-product-description"></p>
+    <div class='product-details-container'>
+        <div class='product-image-container'>
+            <img id="popup-product-image" width=300 height=320 alt="">
+        </div>
+        <div class='product-info-container'>
+            <h2 id="popup-product-title"></h2>
+            <p id="popup-product-description"></p>
+            <p id="popup-product-price"></p>
+        </div>
+    </div>
     <div id="popup-product-options">
       <div id="popup-product-colors"></div>
       <select id="popup-product-sizes">
@@ -60,7 +67,6 @@
         <option value="XL">XL</option>
       </select>
     </div>
-    <p id="popup-product-price"></p>
     <button id="add-to-cart-button">Add to Cart</button>
   </div>
 </div>
@@ -122,6 +128,10 @@
     border: 2px solid #000;
   }
 
+  .product-details-container{
+    display: flex;
+  }
+
   #add-to-cart-button {
     background-color: #000;
     color: #fff;
@@ -151,7 +161,7 @@
       popupImage.src = product.featured_image;
       popupImage.alt = product.title;
       popupTitle.textContent = product.title;
-      popupDescription.textContent = product.description;
+      popupDescription.innerHTML = product.description;
       popupPrice.textContent = (product.price / 100).toFixed(2); // Convert cents to dollars
 
       // Populate color options
