@@ -59,13 +59,22 @@
 }
 {% endschema %}
 
-<div class="banner">
+{% if request.device_type == 'mobile' %}
+<div class="top-bar">
+  <div class="top-bar-content">
+    <span class="more-options">&#9776;</span>
+    <span class="top-bar-company-name">{{ section.settings.company_name }}</span>
+  </div>
+</div>
+{% else %}
 <div class="top-bar">
    <div class="top-bar-company-name">{{ section.settings.company_name }}</div>
    <div class="top-bar-announcement"> {{ section.settings.top_bar_announcement }}</div>
     <a href="{{ section.settings.banner_button_link }}" class="top-bar-button">{{ section.settings.top_bar_button_text }}</a>
 </div>
+{% endif %}
 
+<div class="banner">
 <img id="frame2-img" src="{{ 'Frame2.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
   <div class="banner-container">
     <div class="banner-content">
