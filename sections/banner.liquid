@@ -133,6 +133,9 @@
     }
 
     @media (max-width: 768px) {
+      .top-bar {
+      display: none;
+    }
         .top-bar-content {
           justify-content: center;
         }
@@ -152,6 +155,15 @@
           display: flex;
         }
       }
+
+  @media (min-width: 769px) {
+    .top-bar {
+      display: flex;
+    }
+    .top-bar-mobile {
+      display: none;
+    }
+  }
   .banner {
     position: relative;
     text-align: center;
