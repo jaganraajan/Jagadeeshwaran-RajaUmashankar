@@ -143,13 +143,14 @@
         "type": "banner",
         "custom_css": [],
         "settings": {
-          "company_name": "TISSO VISION",
-          "top_bar_announcement": "Find the ideal gift for your loved ones",
+          "company_name": "TISSO VISON",
+          "top_bar_announcement": "Find the ideal gift for your loved ones.",
           "top_bar_button_text": "CHOOSE GIFT",
           "banner_heading": "The Gift Guide",
           "banner_subheading": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
           "banner_button_link": "",
-          "banner_button_text": "Shop Now"
+          "banner_button_text": "Shop Now",
+          "bottom_banner_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
         }
       },
       "grid": {
