@@ -86,11 +86,6 @@
     gap: 5px;
     overflow: scroll;
   }
-
-  .product-details-container {
-    display: flex;
-    width: 100%;
-  }
     
   #product-grid-section {
     margin: 60px 30px;
@@ -129,22 +124,17 @@
   }
 
   #popup-product-title {
-    margin: 0px;
+    margin-bottom: 0px;
     /* font-family: Jost; */
     font-weight: lighter;
     font-size: 16px;
     line-height: 19.2px;
     letter-spacing: 0px;
   }
-  #popup-product-description
-   {
-    font-family: Jost;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 15.4px;
-   }
-#popup-product-description
-   {
+  #popup-product-price {
+    margin: 10px 0px;
+}
+  #popup-product-description {
     padding: 0px;
     margin: 0px;
     font-family: Jost;
@@ -153,7 +143,7 @@
     line-height: 15.4px;
     height: 60px;
     overflow: auto;
-   }
+}
   #popup-product-description p
    {
     padding: 0px;
@@ -228,7 +218,10 @@
   .product-details-container{
     display: flex;
     width: 120px;
+    gap: 10px;
+    margin: 0px 16px;
     height: 140px;
+    width: 90%;
   }
 
  #add-to-cart-button {
