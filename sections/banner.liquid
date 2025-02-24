@@ -183,19 +183,36 @@
     text-align: left;
   }
   .banner-button {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;position: relative;
+        background: linear-gradient(to right, #FFF544 50%, #000 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        margin: 10px 30px;
+        border-radius: 4px;
+        font-style: normal;
+        font-weight: 400;
+        /* identical to box height, or 128% */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;      
+        text-decoration: none;
+        padding: 0rem 1rem;
+        color: white;
+        padding: 0.5rem 1.5rem 0.5rem 3rem;
+        transition: background-position 200ms ease-out;
+    }
+
+
+  .banner-button:hover {
+    background-position: left bottom;
+    color: black;
+  }
   }
   .top-bar-button::after,
   .banner-button::after {
     content: '→';
     margin-left: 10px;
     font-size: 16px;
-  }
-  .banner-button:hover {
-    background-color: #333;
   }
   #frame1-img {
     width: 60%
