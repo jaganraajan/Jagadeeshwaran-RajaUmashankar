@@ -62,7 +62,7 @@
       <div id="popup-product-colors"></div>
       <h2>Size</h2>
       <div id="popup-product-sizes">
-        <button class="dropdown-button">Choose your size</button>
+        <div class="dropdown-button">Choose your size</div>
         <div class="dropdown-content">
           <a href="#">XS</a>
           <a href="#">S</a>
@@ -199,8 +199,7 @@
     display: inline-block;
   }
   .dropdown-button {
-    background-color: #f8f8f8;
-    border: 1px solid #000;
+    width: 90%;
     padding: 10px;
     cursor: pointer;
   }
@@ -238,6 +237,7 @@
     var popupClose = document.querySelector('.product-popup-close');
     var addToCartButton = document.getElementById('add-to-cart-button');
     var dropdownButton = document.querySelector('.dropdown-button');
+    var dropdownContent = document.querySelector('.dropdown-content');
     var dropdown = document.querySelector('.dropdown');
 
 
@@ -304,6 +304,7 @@
     // Handle dropdown arrow direction
     popupSizes.addEventListener('click', function() {
         popupSizes.classList.toggle('open');
+        dropdownContent.style.display = 'block';
       });
 
       dropdownButton.addEventListener('click', function() {
