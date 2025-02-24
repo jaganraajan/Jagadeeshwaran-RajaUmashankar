@@ -78,8 +78,12 @@
 
 <style>
   .product-grid {
+    padding: 0px 10px;
+    min-width: 1400px;
     display: flex;
     flex-wrap: wrap;
+    /* gap: 3px; */
+    overflow: scroll;
   }
 
   #product-grid-section {
@@ -101,8 +105,10 @@
     cursor: pointer;
   }
   .product-grid-item img {
-    width: 100%;
-    height: auto;
+    width: 440px;
+    height: 444px;
+    /* overflow: auto; */
+    object-fit: cover;
   }
   .product-popup {
     display: none;
