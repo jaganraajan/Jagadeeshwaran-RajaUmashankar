@@ -89,10 +89,17 @@
 </div>
 
 <style>
-  .banner-bottom-bar,
   .top-bar {
     background: #F5F5F5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     }
+
+  .banner-bottom-bar
+    background: #F5F5F5;
+  }
 
   .top-bar-extra,
   .top-bar-mobile{
@@ -106,12 +113,18 @@
         font-size: 20px;
     }
 
-    .banner-bottom-announcement,
+  .banner-bottom-announcement {
+    color: black;
+    text-align: center;
+  }
     .top-bar-announcement {
         color: black;
         font-style: normal;
         font-size: 16px;
         line-height: 36px;
+        /* identical to box height, or 84% */
+        display: flex;
+        align-items: center;
         text-align: center;
     }
 
