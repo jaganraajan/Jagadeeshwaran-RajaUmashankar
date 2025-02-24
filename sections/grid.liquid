@@ -333,7 +333,7 @@
       console.log(selectedSize);
       if (selectedColor && selectedSize) {
         var variant = product.variants.find(variant => 
-          variant.option1 === selectedSize && variant.option2 === selectedColor.getAttribute('data-color')
+          variant.option1 === selectedSize && variant.option2 === selectedColor
         );
         if (variant) {
           var xhr = new XMLHttpRequest();
