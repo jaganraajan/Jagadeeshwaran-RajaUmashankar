@@ -69,6 +69,15 @@
         <option value="L">L</option>
         <option value="XL">XL</option>
       </select>
+      <!-- Dropdown Component -->
+      <div class="dropdown">
+        <button class="dropdown-button">Dropdown</button>
+        <div class="dropdown-content">
+          <a href="#">Option 1</a>
+          <a href="#">Option 2</a>
+          <a href="#">Option 3</a>
+        </div>
+      </div>
     </div>
     <button id="add-to-cart-button">ADD TO CART</button>
   </div>
@@ -190,6 +199,38 @@
       width: 50% !important; /* 2 products per row */
     }
   }
+
+  /* Dropdown Component Styles */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-button {
+    background-color: #f8f8f8;
+    border: 1px solid #000;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  .dropdown.show .dropdown-content {
+    display: block;
+  }
 </style>
 
 <script>
@@ -203,6 +244,9 @@
     var popupPrice = document.getElementById('popup-product-price');
     var popupClose = document.querySelector('.product-popup-close');
     var addToCartButton = document.getElementById('add-to-cart-button');
+    var dropdownButton = document.querySelector('.dropdown-button');
+    var dropdown = document.querySelector('.dropdown');
+
 
     window.showProductPopup = function(product) {
       popupImage.src = product.featured_image;
@@ -267,6 +311,10 @@
     // Handle dropdown arrow direction
     popupSizes.addEventListener('click', function() {
         popupSizes.classList.toggle('open');
+      });
+
+      dropdownButton.addEventListener('click', function() {
+        dropdown.classList.toggle('show');
       });
 
     function updatePrice(product) {
