@@ -27,7 +27,7 @@
 {% assign collection = collections[section.settings.collection] %}
 {% if collection %}
     <div id="product-grid-section">
-        <div>Tisso Vison in the wild</div>
+        <div class="product-grid-header">Tisso Vison in the wild</div>
         <div class="product-grid">
         {% assign reversed_products = collection.products | reverse %}
         {% for product in reversed_products %}
@@ -81,6 +81,20 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  #product-grid-section {
+    margin: 40px 30px;
+  }
+
+  .product-grid-header {
+    font-family: Lustria;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 43.2px;
+    letter-spacing: 0px;
+    margin: 10px 10px;
+}
+  
   .product-grid-item {
     box-sizing: border-box;
     padding: 10px;
