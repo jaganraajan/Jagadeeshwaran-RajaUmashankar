@@ -379,6 +379,13 @@
     // Handle dropdown arrow direction
     popupSizes.addEventListener('click', function() {
         popupSizes.classList.toggle('open');
+      console.log('in dropdown click');
+        
+        if (popupSizes.classList.contains('show')) {
+            dropdownContent.style.display = 'block'; // Or 'flex', 'grid', etc.
+        } else {
+            dropdownContent.style.display = 'none';
+        }
       });
 
       dropdownButton.addEventListener('click', function() {
