@@ -215,7 +215,6 @@
 
   #popup-product-sizes {
     width: 100%;
-    padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     appearance: none;
@@ -279,10 +278,13 @@
   }
   .dropdown-content {
     display: none;
+    width: 33%;
     position: absolute;
     background-color: #fff;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 152px;
+    max-height: 86px;
+    overflow: scroll;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
   .dropdown-content a {
@@ -312,6 +314,7 @@
     var addToCartButton = document.getElementById('add-to-cart-button');
     var dropdownButton = document.querySelector('.dropdown-button');
     var dropdown = document.querySelector('.dropdown');
+    var dropdownContent = document.querySelector('.dropdown-content');
 
 
     window.showProductPopup = function(product) {
@@ -380,6 +383,12 @@
 
       dropdownButton.addEventListener('click', function() {
         dropdown.classList.toggle('show');
+        
+        if (dropdown.classList.contains('show')) {
+            dropdownContent.style.display = 'block'; // Or 'flex', 'grid', etc.
+        } else {
+            dropdownContent.style.display = 'none';
+        }
       });
 
     function updatePrice(product) {
