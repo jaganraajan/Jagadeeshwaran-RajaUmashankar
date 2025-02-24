@@ -62,7 +62,7 @@
       <div id="popup-product-colors"></div>
       <h2>Size</h2>
       <div id="popup-product-sizes">
-        <div class="dropdown-button">Choose your size</div>
+        <button class="dropdown-button">Choose your size</button>
         <div class="dropdown-content">
           <a href="#">XS</a>
           <a href="#">S</a>
@@ -199,7 +199,8 @@
     display: inline-block;
   }
   .dropdown-button {
-    width: 90%;
+    background-color: #f8f8f8;
+    border: 1px solid #000;
     padding: 10px;
     cursor: pointer;
   }
@@ -237,7 +238,6 @@
     var popupClose = document.querySelector('.product-popup-close');
     var addToCartButton = document.getElementById('add-to-cart-button');
     var dropdownButton = document.querySelector('.dropdown-button');
-    var dropdownContent = document.querySelector('.dropdown-content');
     var dropdown = document.querySelector('.dropdown');
 
 
@@ -304,7 +304,6 @@
     // Handle dropdown arrow direction
     popupSizes.addEventListener('click', function() {
         popupSizes.classList.toggle('open');
-        dropdownContent.style.display = 'block';
       });
 
       dropdownButton.addEventListener('click', function() {
@@ -325,8 +324,10 @@
     }
 
     function addToCart(product) {
-      var selectedColor = document.querySelector('.color-option.selected');
-      var selectedSize = popupSizes.value;
+      {% comment %} var selectedColor = document.querySelector('.color-option.selected');
+      var selectedSize = popupSizes.value; {% endcomment %}
+      var selectedColor = 'Black';
+      var selectedSize = 'M';
       console.log(selectedColor);
       console.log(selectedSize);
       if (selectedColor && selectedSize) {
@@ -351,10 +352,17 @@
             }
           };
 
-          xhr.send(JSON.stringify({
+          if(selectedColor === 'Black' && selectedSize === 'M') {
+            xhr.send(JSON.stringify({
               id: 44759342645380,
               quantity: 1
-          }));
+            }));
+          } else {
+            xhr.send(JSON.stringify({
+              id: variant.id,
+              quantity: 1
+            }));
+          }
         } else {
           alert('Please select a valid variant.');
         }
