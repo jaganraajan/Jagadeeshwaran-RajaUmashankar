@@ -26,7 +26,7 @@
 
 {% assign collection = collections[section.settings.collection] %}
 {% if collection %}
-    <div>
+    <div id="product-grid-section">
         <div>Tisso Vison in the wild</div>
         <div class="product-grid">
         {% assign reversed_products = collection.products | reverse %}
