@@ -381,23 +381,23 @@
         popupSizes.classList.toggle('open');
       console.log('in dropdown click');
         
-        if (popupSizes.classList.contains('show')) {
+        if (popupSizes.classList.contains('open')) {
             dropdownContent.style.display = 'block'; // Or 'flex', 'grid', etc.
         } else {
             dropdownContent.style.display = 'none';
         }
       });
 
-      dropdownButton.addEventListener('click', function() {
-        // dropdown.classList.toggle('show');
-        console.log('in dropdown click');
+      // dropdownButton.addEventListener('click', function() {
+      //   // dropdown.classList.toggle('show');
+      //   console.log('in dropdown click');
         
-        if (popupSizes.classList.contains('show')) {
-            dropdownContent.style.display = 'block'; // Or 'flex', 'grid', etc.
-        } else {
-            dropdownContent.style.display = 'none';
-        }
-      });
+      //   if (popupSizes.classList.contains('show')) {
+      //       dropdownContent.style.display = 'block'; // Or 'flex', 'grid', etc.
+      //   } else {
+      //       dropdownContent.style.display = 'none';
+      //   }
+      // });
 
     function updatePrice(product) {
       var selectedColor = document.querySelector('.color-option.selected');
