@@ -39,6 +39,12 @@
       "default": "Your Banner Subheading"
     },
     {
+        "type": "text",
+        "id": "mobile_view_banner_subheading",
+        "label": "Mobile View Banner Subheading",
+        "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
+      },
+    {
       "type": "url",
       "id": "banner_button_link",
       "label": "Button Link"
@@ -88,6 +94,17 @@
         <a href="{{ section.settings.banner_button_link }}" class="banner-button">{{ section.settings.banner_button_text }}</a>
     </div>
     <img id="frame1-img" src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image" width="600" height="400">
+   </div>
+  <div class="mobile-view-banner-container">
+    <div class="banner-content">
+        <h1>{{ section.settings.banner_heading }}</h1>
+        <p>{{ section.settings.mobile_view_banner_subheading }}</p>
+    </div>
+    <div class="banner-image-button-container">
+      <img id="frame1-img" src="{{ 'Frame1.png' | asset_url }}" alt="Banner Image" width="600" height="400">
+      <a href="{{ section.settings.banner_button_link }}" class="banner-button">{{ section.settings.banner_button_text }}</a>
+    </div>
+    
    </div>
    <div class="banner-bottom-bar">
     <div class="banner-bottom-announcement">{{ section.settings.bottom_banner_text }}</div>
@@ -265,6 +282,12 @@
    .banner-bottom-announcement{
      display: none;
    }
+   .mobile-view-banner-container {
+     display: block;
+   }
+   .banner-container {
+     display: none;
+   }
  }
 
    @media (min-width: 376px) {
@@ -295,6 +318,12 @@
    }
    .banner-bottom-announcement{
      display: block;
+   }
+    .mobile-view-banner-container {
+     display: block;
+   }
+   .banner-container {
+     display: none;
    }
   }
 </style>
