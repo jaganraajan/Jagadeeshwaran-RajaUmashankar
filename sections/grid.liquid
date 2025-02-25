@@ -370,6 +370,14 @@
         option.addEventListener('click', function() {
           colorOptions.forEach(function(opt) { opt.classList.remove('selected'); });
           option.classList.add('selected');
+
+          // Update background color of the color-box
+          const colorBox = this.querySelector('.color-box');
+          if (this.classList.contains('selected')) {
+            colorBox.style.backgroundColor = 'black';
+          } else {
+            colorBox.style.backgroundColor = 'white';
+          }
           updatePrice(product);
         });
       });
@@ -424,6 +432,8 @@
 
     function updatePrice(product) {
       var selectedColor = document.querySelector('.color-option.selected');
+      var colorText = selectedColor.querySelector('.color-text');
+      console.log(colorText);
       var selectedSize = popupSizes.value;
       if (selectedColor && selectedSize) {
         var variant = product.variants.find(variant => 
