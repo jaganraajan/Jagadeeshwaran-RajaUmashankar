@@ -429,6 +429,9 @@
     popupSizes.addEventListener('click', function() {
         popupSizes.classList.toggle('open');
       console.log('in dropdown click');
+      console.log(event.target.tagName);
+      console.log(event.target.getAttribute('data-value'));
+
         
         if (popupSizes.classList.contains('open')) {
             dropdownContent.style.display = 'block'; // Or 'flex', 'grid', etc.
