@@ -367,20 +367,21 @@
 
       // Handle color selection
       var colorOptions = document.querySelectorAll('.color-option');
+      var colorTexts = document.querySelectorAll('.color-text');
+
       colorOptions.forEach(function(option) {
         option.addEventListener('click', function() {
           colorOptions.forEach(function(opt) { opt.classList.remove('selected'); });
           option.classList.add('selected');
 
+          
+          colorTexts.forEach(function(opt) { opt.classList.remove('selected'); });
           // Update background color of the color-text
           const colorText = this.querySelector('.color-text');
+
+          colorText.addEventListener('click', function() {
           if (this.classList.contains('selected')) {
-            colorText.style.backgroundColor = 'black';
-            colorText.style.color = 'white';
-            
-          } else {
-            colorText.style.backgroundColor = 'white';
-            colorText.style.color = 'black';
+            colorText.classList.add('selected')
           }
           updatePrice(product);
         });
