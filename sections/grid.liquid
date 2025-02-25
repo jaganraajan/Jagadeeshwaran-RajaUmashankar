@@ -199,13 +199,14 @@
       border: 1px solid black;
   }
   .color-text {
-    padding: 10px 0px 0px 9px;
+    padding: 9px 0px 0px 9px;
     display: flex;
-    width: 90%;
+    width: 100%;
+    height: 100%;
+    color: black;
     font-weight: 400;
     font-size: 18px;
-    line-height: 18px;
-}
+  }
 
   #popup-product-image {
     width: 120px;
@@ -375,8 +376,11 @@
           const colorText = this.querySelector('.color-text');
           if (this.classList.contains('selected')) {
             colorText.style.backgroundColor = 'black';
+            colorText.style.color = 'white';
+            
           } else {
             colorText.style.backgroundColor = 'white';
+            colorText.style.color = 'black';
           }
           updatePrice(product);
         });
