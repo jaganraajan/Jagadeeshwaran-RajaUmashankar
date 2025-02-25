@@ -361,17 +361,18 @@
         width: 100%;
         height: fit-content;
       }
-      #frame1-img {
+    #frame1-img {
         flex: 2;
         height: auto;
-        object-fit: cover;
-      }
+        transform: translate(-21px, -3px) scale(1.05);
+    }
 
     .banner-container {
       display: flex;
       gap: 10px;
       justify-content: space-between;
       padding-left: 5rem;
+      overflow: hidden;
     }
      .mobile-view-banner-bottom-announcement{
      display: none;
@@ -381,9 +382,6 @@
    }
     .mobile-view-banner-container {
      display: none;
-   }
-   .banner-container {
-     display: block;
    }
   }
 </style>
