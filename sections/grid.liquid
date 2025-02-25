@@ -371,12 +371,12 @@
           colorOptions.forEach(function(opt) { opt.classList.remove('selected'); });
           option.classList.add('selected');
 
-          // Update background color of the color-box
-          const colorBox = this.querySelector('.color-box');
+          // Update background color of the color-text
+          const colorText = this.querySelector('.color-text');
           if (this.classList.contains('selected')) {
-            colorBox.style.backgroundColor = 'black';
+            colorText.style.backgroundColor = 'black';
           } else {
-            colorBox.style.backgroundColor = 'white';
+            colorText.style.backgroundColor = 'white';
           }
           updatePrice(product);
         });
