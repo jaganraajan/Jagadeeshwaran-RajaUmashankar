@@ -65,11 +65,11 @@
       <div id="popup-product-sizes">
         <div class="dropdown-button">Choose your size</div>
         <div class="dropdown-content">
-          <a href="#">XS</a>
-          <a href="#">S</a>
-          <a href="#">M</a>
-          <a href="#">L</a>
-          <a href="#">XL</a>
+          <div data-value="XS">XS</div>
+          <div data-value="S">S</div>
+          <div data-value="M">M</div>
+          <div data-value="L">L</div>
+          <div data-value="XL">XL</div>
         </div>
       </div>
     </div>
@@ -314,7 +314,7 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
-  .dropdown-content a {
+  .dropdown-content div {
     color: black;
     height: 36px;
     text-decoration: none;
@@ -396,7 +396,12 @@
 
       // Handle size selection
       popupSizes.addEventListener('change', function() {
-        updatePrice(product);
+        if (event.target.tagName === 'DIV') {
+          var size = event.target.getAttribute('data-value');
+          dropdownButton.textContent = size;
+          console.log(size);
+        }
+        {% comment %} updatePrice(product); {% endcomment %}
       });
 
 
