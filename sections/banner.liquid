@@ -386,10 +386,15 @@
     document.addEventListener('DOMContentLoaded', function() {
       var moreOptions = document.querySelector('.more-options');
       var topBarExtra = document.querySelector('.top-bar-extra');
-  
+
       if (moreOptions) {
         moreOptions.addEventListener('click', function() {
           topBarExtra.classList.toggle('show');
+          if (topBarExtra.classList.contains('show')) {
+                moreOptions.textContent = 'x'; // Change to 'x' when open
+            } else {
+                moreOptions.textContent = '☰'; // Change back to hamburger when closed
+            }
         });
       }
     });
