@@ -54,6 +54,12 @@
         "id": "bottom_banner_text",
         "label": "Bottom Banner Text",
         "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+      },
+    {
+        "type": "text",
+        "id": "mobile_view_bottom_banner_text",
+        "label": "Mobile View Bottom Banner Text",
+        "default": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
       }
   ]
 }
@@ -85,6 +91,7 @@
    </div>
    <div class="banner-bottom-bar">
     <div class="banner-bottom-announcement">{{ section.settings.bottom_banner_text }}</div>
+     <div class="mobile-view-banner-bottom-announcement">{{ section.settings.mobile_view_bottom_banner_text }}</div>
    </div>
 </div>
 
@@ -113,11 +120,13 @@
         font-size: 20px;
     }
 
+  .mobile-view-banner-bottom-announcement,
   .banner-bottom-announcement {
     background: #F5F5F5;
     color: black;
     text-align: center;
   }
+
     .top-bar-announcement {
         color: black;
         font-style: normal;
@@ -249,6 +258,13 @@
    .banner-container {
      display: block;
    }
+
+   .mobile-view-banner-bottom-announcement{
+     display: block;
+   }
+   .banner-bottom-announcement{
+     display: none;
+   }
  }
 
    @media (min-width: 376px) {
@@ -274,6 +290,12 @@
       justify-content: space-between;
       padding-left: 5rem;
     }
+     .mobile-view-banner-bottom-announcement{
+     display: none;
+   }
+   .banner-bottom-announcement{
+     display: block;
+   }
   }
 </style>
 
