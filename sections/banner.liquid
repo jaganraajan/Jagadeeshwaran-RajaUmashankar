@@ -129,6 +129,8 @@
   .top-bar-mobile{
     display: none;
   }
+
+  
       
     .top-bar .top-bar-company-name {
         color: black;
@@ -136,6 +138,12 @@
         margin: 0 30px;
         font-size: 20px;
     }
+
+  .top-bar-company-name {
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: center;
+  }
 
   .mobile-view-banner-bottom-announcement,
   .banner-bottom-announcement {
@@ -186,15 +194,22 @@
         }
         .more-options {
           cursor: pointer;
+          font-size: 20px;
+          margin-bottom: 5px;
         }
         .top-bar-mobile {
-          display: inline-block;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          width: 100%;
+          background: #F2F2F2;
         }
         .top-bar-extra {
+          background: #F2F2F2;
           display: none;
           flex-direction: column;
           align-items: center;
-          margin-top: 10px;
         }
         .top-bar-extra.show {
           display: flex;
