@@ -432,7 +432,11 @@
       console.log(event.target.tagName);
       console.log(event.target.getAttribute('data-value'));
 
-        
+        if (event.target.getAttribute('data-value')) {
+          var size = event.target.getAttribute('data-value');
+          dropdownButton.textContent = size;
+          console.log(size);
+        }
         if (popupSizes.classList.contains('open')) {
             dropdownContent.style.display = 'block'; // Or 'flex', 'grid', etc.
         } else {
