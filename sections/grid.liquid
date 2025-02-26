@@ -480,29 +480,6 @@
       }
     }
 
-    function addAdditionalItemToCart() {
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/cart/add.js', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          // Open the cart notification
-          var cartNotification = document.querySelector('cart-notification');
-          if (cartNotification) {
-            cartNotification.open();
-          }
-          popup.style.display = 'none';
-        } else if (xhr.readyState === 4) {
-          console.error('Error:', xhr.responseText);
-          alert('Failed to add additional item to cart.');
-        }
-      };
-      xhr.send(JSON.stringify({
-        id: 44759342645380,
-        quantity: 1
-      }));
-    }
-
     function addToCart(product) {
       var selectedColorElement = document.querySelector('.color-option.selected');
       
@@ -520,42 +497,76 @@
       console.log(selectedSize.length < 3);
       if (selectedColor && selectedSize && selectedSize.length < 3) {
         var variant = product.variants.find(variant => 
-          variant.option1 === selectedSize && variant.option2 === selectedColor
+          variant.option1 === selectedSize && variant.option2 === selectedColor.textContent
         );
         if (variant) {
-          console.log('adding product to cart');
-          var xhr = new XMLHttpRequest();
-          xhr.open('POST', '/cart/add.js', true);
-          xhr.setRequestHeader('Content-Type', 'application/json');
-          xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id: variant.id,
+              quantity: 1
+            })
+          })
+          .then(response => {
+            if (response.ok) {
               // Open the cart notification
               var cartNotification = document.querySelector('cart-notification');
               if (cartNotification) {
                 cartNotification.open();
               }
-              popup.style.display = 'none';
-            } else if (xhr.readyState === 4) {
-              console.error('Error:', xhr.responseText);
-              alert('Failed to add to cart.');
+              // Add another item with variant ID 44759342645380 if size is M and color is Black
+              if (selectedSize === 'M' && selectedColor.textContent === 'Black') {
+                {% comment %} addAdditionalItemToCart(); {% endcomment %}
+                console.log('to add new item');
+              } else {
+                popup.style.display = 'none';
+              }
+            } else {
+              return response.text().then(text => { throw new Error(text); });
             }
-          };
-
-          xhr.send(JSON.stringify({
-            id: variant.id,
-            quantity: 1
-          }));
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to add to cart.');
+          });
         } else {
           alert('Please select a valid variant.');
-        }
-
-        if(selectedColor === 'Black' && selectedSize === 'M') {
-            console.log('add additional item');
-            addAdditionalItemToCart();
         }
       } else {
         alert('Please select a color and size.');
       }
+    }
+  
+    function addAdditionalItemToCart() {
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: 44759342645380,
+          quantity: 1
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          // Open the cart notification
+          var cartNotification = document.querySelector('cart-notification');
+          if (cartNotification) {
+            cartNotification.open();
+          }
+          popup.style.display = 'none';
+        } else {
+          return response.text().then(text => { throw new Error(text); });
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to add additional item to cart.');
+      });
     }
   });
 </script>
