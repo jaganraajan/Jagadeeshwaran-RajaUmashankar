@@ -387,17 +387,17 @@
           option.classList.add('selected');
 
           // Update background color of the color-text
-          const colorText = this.querySelector('.color-text');
+          // const colorText = this.querySelector('.color-text');
 
-          colorText.addEventListener('click', function() {
-          if (this.classList.contains('selected')) {
-            colorText.classList.toggle('selected')
-            colorText.style.color = 'white';
+          // colorText.addEventListener('click', function() {
+          // if (this.classList.contains('selected')) {
+          //   colorText.classList.toggle('selected')
+          //   colorText.style.color = 'white';
             
-          } else {
-            colorText.style.backgroundColor = 'white';
-            colorText.style.color = 'black';
-          }
+          // } else {
+          //   colorText.style.backgroundColor = 'white';
+          //   colorText.style.color = 'black';
+          // }
           updatePrice(product);
         });
       })});
