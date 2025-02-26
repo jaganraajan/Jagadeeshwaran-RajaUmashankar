@@ -500,6 +500,7 @@
           variant.option1 === selectedSize && variant.option2 === selectedColor.textContent
         );
         console.log(variant);
+        console.log(product.variants);
         if (variant) {
           fetch('/cart/add.js', {
             method: 'POST',
