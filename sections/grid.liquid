@@ -464,6 +464,9 @@
     function updatePrice(product) {
       var selectedColorElement = document.querySelector('.color-option.selected');
       var colorText = selectedColorElement.querySelector('.color-text');
+      console.log('in updatePrice');
+      console.log(popupSizes.value);
+      console.log(popupSizes.getAttribute('data-value'));
       console.log(colorText.textContent);
       var selectedColor = colorText.textContent;
       var selectedSize = popupSizes.value;
