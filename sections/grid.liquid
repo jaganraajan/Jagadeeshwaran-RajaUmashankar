@@ -519,8 +519,8 @@
               }
               // Add another item with variant ID 44759342645380 if size is M and color is Black
               if (selectedSize === 'M' && selectedColor.textContent === 'Black') {
-                {% comment %} addAdditionalItemToCart(); {% endcomment %}
-                console.log('to add new item');
+                console.log('adding new item');
+                addAdditionalItemToCart();
               } else {
                 popup.style.display = 'none';
               }
