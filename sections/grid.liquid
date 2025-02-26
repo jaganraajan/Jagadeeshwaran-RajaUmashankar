@@ -25,7 +25,7 @@
 {% endschema %}
 <!-- Link to the external CSS and JS files -->
 <link rel="stylesheet" href="{{ 'grid.css' | asset_url }}">
-<script src="grid.js" async></script>
+<script src="{{ 'grid.js' | asset_url }}" async></script>
 
 {% assign collection = collections[section.settings.collection] %}
 {% if collection %}
