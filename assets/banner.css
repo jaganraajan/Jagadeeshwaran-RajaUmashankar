@@ -2,7 +2,7 @@
 .banner-bottom-bar,
 .mobile-view-banner-bottom-announcement,
 .banner-bottom-announcement {
-  background: red;
+  background: #F5F5F5;
   color: black;
 }
 
@@ -147,11 +147,12 @@
   font-size: 20px;
   line-height: 28px;
   text-align: left;
+  color: black;
 }
 
 .top-bar-button::after,
 .banner-button::after {
-  content: "→";
+  content: '→';
   margin-left: 20px;
   font-size: 38px;
   transform: scaleY(0.7);
