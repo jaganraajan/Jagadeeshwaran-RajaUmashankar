@@ -482,12 +482,13 @@
 
     function addToCart(product) {
       var selectedColorElement = document.querySelector('.color-option.selected');
-      var colorText = selectedColorElement.querySelector('.color-text');
-      console.log('in add to cart');
-
+      
       if(!selectedColorElement) {
         alert('Please select a valid color.');
       }
+
+      var colorText = selectedColorElement.querySelector('.color-text');
+      console.log('in add to cart');
       
       var selectedColor = colorText.textContent;
       var selectedSize = popupSizes.querySelector('.dropdown-button').textContent;
