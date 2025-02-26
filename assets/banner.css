@@ -170,7 +170,7 @@
     font-size: 38px;
     transform: scaleY(0.7);
   }
-  #frame1-img {
+  #banner-img {
     width: 60%
   }
  @media (max-width: 376px) {
@@ -178,11 +178,11 @@
       display: none;
     }
 
-   #frame2-img {
+   #banner-top-img {
         display: none;
     }
 
-    #frame1-img {
+    #banner-img {
         width: auto;
         height: 100%;
         position: relative;
@@ -268,11 +268,11 @@
     .top-bar-mobile {
       display: none;
     }
-    #frame2-img {
+    #banner-top-img {
         width: 100%;
         height: fit-content;
       }
-    #frame1-img {
+    #banner-img {
         flex: 2;
         height: auto;
         transform: translate(-21px, -3px) scale(1.05);
