@@ -61,353 +61,51 @@
 }
 {% endschema %}
 
- {% comment %} displayed only in mobile view {% endcomment %}
-  <div class="top-bar-mobile">
+<!-- Link to the external CSS file -->
+<link rel="stylesheet" href="{{ 'banner.css' | asset_url }}">
+
+{% comment %} displayed only in mobile view {% endcomment %}
+<div class="top-bar-mobile">
     <span class="more-options">&#9776;</span>
     <span class="top-bar-mobile-company-name">{{ section.settings.company_name }}</span>
-  </div>
-  {% comment %} display extra info when more options is selected in mobile view  {% endcomment %}
-  <div class="top-bar-extra">
-        <span class="top-bar-announcement">{{ section.settings.top_bar_announcement }}</span>
-        <a href="#product-grid-section" class="top-bar-button">{{ section.settings.top_bar_button_text }}</a>
-  </div>
-    {% comment %} displayed only in mobile view {% endcomment %}
-  <div class="top-bar">
-      <div class="top-bar-company-name">{{ section.settings.company_name }}</div>
-      <div class="top-bar-announcement"> {{ section.settings.top_bar_announcement }}</div>
-      <a href="#product-grid-section" class="top-bar-button">{{ section.settings.top_bar_button_text }}</a>
-  </div>
-
-<div class="banner">
-<img id="frame2-img" src="{{ 'banner_image_1.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
-  <div class="banner-container">
-    <div class="banner-content">
-        <h1>{{ section.settings.banner_heading }}</h1>
-        <p>{{ section.settings.banner_subheading }}</p>
-        <a href="#product-grid-section" class="banner-button">{{ section.settings.banner_button_text }}</a>
-    </div>
-    <img id="frame1-img" src="{{ 'banner_image_2.svg' | asset_url }}" alt="Banner Image" width="600" height="400">
-   </div>
-  <div class="mobile-view-banner-container">
-    <div class="banner-content">
-        <h1>{{ section.settings.banner_heading }}</h1>
-        <p>{{ section.settings.mobile_view_banner_subheading }}</p>
-    </div>
-    <div class="banner-image-button-container">
-      <img id="frame1-img" src="{{ 'mobile_banner_image.svg' | asset_url }}" alt="Banner Image" width="600" height="400">
-      <a href="#product-grid-section" class="banner-button">{{ section.settings.banner_button_text }}</a>
-    </div>
-    
-   </div>
-   <div class="banner-bottom-bar">
-    <div class="banner-bottom-announcement">{{ section.settings.bottom_banner_text }}</div>
-     <div class="mobile-view-banner-bottom-announcement">{{ section.settings.mobile_view_bottom_banner_text }}</div>
-   </div>
+</div>
+{% comment %} display extra info when more options is selected in mobile view  {% endcomment %}
+<div class="top-bar-extra">
+    <span class="top-bar-announcement">{{ section.settings.top_bar_announcement }}</span>
+    <a href="#product-grid-section" class="top-bar-button">{{ section.settings.top_bar_button_text }}</a>
+</div>
+{% comment %} displayed only in mobile view {% endcomment %}
+<div class="top-bar">
+    <div class="top-bar-company-name">{{ section.settings.company_name }}</div>
+    <div class="top-bar-announcement"> {{ section.settings.top_bar_announcement }}</div>
+    <a href="#product-grid-section" class="top-bar-button">{{ section.settings.top_bar_button_text }}</a>
 </div>
 
-<style>
-  .top-bar {
-    background: #F5F5F5;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    }
-
-  .banner-bottom-bar {
-    background: #F5F5F5;
-  }
-
-  .top-bar-extra,
-  .top-bar-mobile{
-    display: none;
-  }
-
-  
-      
-    .top-bar .top-bar-company-name {
-        font-family: Jost;
-        color: black;
-        font-weight: 500;
-        margin: 0px 40px;
-        font-size: 26px;
-    }
-
-  .top-bar-mobile-company-name {
-    font-weight: 500;
-    flex-grow: 1;
-    text-align: center;
-    font-size: 22px;
-    font-family: 'Jost';
-    color: black;
-  }
-
-  .mobile-view-banner-bottom-announcement,
-  .banner-bottom-announcement {
-    background: #F5F5F5;
-    color: black;
-    text-align: center;
-  }
-
-    .top-bar-announcement {
-        color: black;
-        font-style: normal;
-        font-size: 16px;
-        line-height: 36px;
-        /* identical to box height, or 84% */
-        display: flex;
-        align-items: center;
-        text-align: center;
-    }
-
-    .top-bar-button {
-        width: 220px;
-        height: 50px;
-        background: linear-gradient(to right, #000 50%, #FFF544 50%);
-        background-size: 200% 100%;
-        background-position: right bottom;
-        margin: 10px 30px;
-        font-family: Jost;
-        font-style: normal;
-        font-weight: 300;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #000000;
-        padding: 0.5rem 0.5rem 0.5rem 4.5rem;
-        transition: background-position 200ms ease-out;
-    }
-
-
-  .top-bar-button:hover {
-    background-position: left bottom;
-    color: white;
-  }
-   
-        .top-bar-content {
-          justify-content: center;
-        }
-        .more-options {
-          cursor: pointer;
-          font-size: 20px;
-          margin-bottom: 5px;
-        }
-        .top-bar-mobile {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px;
-          width: 100%;
-          background: #F2F2F2;
-        }
-        .top-bar-extra {
-          background: #F2F2F2;
-          display: none;
-          flex-direction: column;
-          align-items: center;
-        }
-        .top-bar-extra.show {
-          display: flex;
-        }
-      }
-  .banner {
-    position: relative;
-    text-align: center;
-    color: white;
-  }
-  .banner-content {
-    font-family: Jost;
-    min-width: 515px;
-    padding-bottom: 40px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-  }
-
-  .banner-content h1 {
-    margin: 0px;
-    font-family: Jost;
-    font-weight: 500;
-    font-size: 70px;
-    line-height: 70px;
-    letter-spacing: 0px;
-  }
-  .banner-content p {
-    color: black;
-    text-align: left;
-    font-family: Jost;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0px;
-
-  }
-  .banner-button {
-        width: 220px;
-        height: 50px;
-        background: linear-gradient(to right, #FFF544 50%, #000 50%);
-        background-size: 200% 100%;
-        background-position: right bottom;
-        font-family: Jost;
-        font-style: normal;
-        font-weight: 300;
-        /* identical to box height, or 128% */
-        display: flex;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;      
-        text-decoration: none;
-        color: white;
-        padding: 0.5rem 0.5rem 0.5rem 4.5rem;;
-        transition: background-position 200ms ease-out;
-    }
-
-
-  .banner-button:hover {
-    background-position: left bottom;
-    color: black;
-  }
-  .top-bar-button::after,
-  .banner-button::after {
-    content: '→';
-    margin-left: 20px;
-    font-size: 38px;
-    transform: scaleY(0.7);
-  }
-  #frame1-img {
-    width: 60%
-  }
- @media (max-width: 376px) {
-    .top-bar {
-      display: none;
-    }
-
-   #frame2-img {
-        display: none;
-    }
-
-    #frame1-img {
-        width: auto;
-        height: 100%;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-   .banner-container {
-     display: block;
-   }
-
-   .mobile-view-banner-bottom-announcement{
-      display: block;
-        padding: 3px;
-        font-family: Jost;
-        font-weight: 400;
-        font-size: 13px;
-        letter-spacing: 0px;
-        text-align: center;
-   }
-   .banner-bottom-announcement{
-     display: none;
-   }
-   .mobile-view-banner-container {
-     display: block;
-   }
-   .banner-container {
-     display: none;
-   }
-   .banner-content {
-       min-width: auto;
-        display: flex;
-        align-items: center;
-        padding: 0px;
-     }
-     .banner-content h1 {
-       font-family: Jost;
-      font-weight: 500;
-        font-size: 30px;
-        line-height: 30px;
-        letter-spacing: 0px;
-       margin: 30px 10px 10px 10px;
-    }
-     .banner-content p {
-       margin: 10px;
-        /* font-family: Jost; */
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 20.8px;
-        letter-spacing: 0px;
-        text-align: center;
-        width: 340px;
-        text-align: center;
-     }
-   .banner-image-button-container {
-      position: relative;
-    }
-   .banner-button {
-        position: absolute;
-        bottom: 10%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.85);
-    }
-   
-   
- }
-
-   @media (min-width: 376px) {
-    .top-bar {
-      display: flex;
-      min-width: 1400px;
-    }
-     
-    .banner {
-        min-width: 1400px;
-    }
-
-     .top-bar-company-name {
-      font-size: 24px;
-     }
-    .top-bar-extra,
-    .top-bar-extra.show,
-    .top-bar-mobile {
-      display: none;
-    }
-    #frame2-img {
-        width: 100%;
-        height: fit-content;
-      }
-    #frame1-img {
-        flex: 2;
-        height: auto;
-        transform: translate(-21px, -3px) scale(1.05);
-    }
-
-    .banner-container {
-      display: flex;
-      gap: 10px;
-      justify-content: space-between;
-      padding-left: 5rem;
-      overflow: hidden;
-    }
-     .mobile-view-banner-bottom-announcement{
-     display: none;
-   }
-   .banner-bottom-announcement{
-     display: block;
-      font-family: Jost;
-      font-weight: 400;
-      letter-spacing: 0px;
-      text-align: center;
-   }
-    .mobile-view-banner-container {
-     display: none;
-   }
-  }
-</style>
+<div class="banner">
+    <img id="banner-top-img" src="{{ 'banner_image_1.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
+    <div class="banner-container">
+        <div class="banner-content">
+            <h1>{{ section.settings.banner_heading }}</h1>
+            <p>{{ section.settings.banner_subheading }}</p>
+            <a href="#product-grid-section" class="banner-button">{{ section.settings.banner_button_text }}</a>
+        </div>
+        <img id="banner-img" src="{{ 'banner_image_2.svg' | asset_url }}" alt="Banner Image" width="600" height="400">
+    </div>
+    <div class="mobile-view-banner-container">
+        <div class="banner-content">
+            <h1>{{ section.settings.banner_heading }}</h1>
+            <p>{{ section.settings.mobile_view_banner_subheading }}</p>
+        </div>
+        <div class="banner-image-button-container">
+            <img id="banner-img" src="{{ 'mobile_banner_image.svg' | asset_url }}" alt="Banner Image" width="600" height="400">
+            <a href="#product-grid-section" class="banner-button">{{ section.settings.banner_button_text }}</a>
+        </div>
+   </div>
+   <div class="banner-bottom-bar">
+        <div class="banner-bottom-announcement">{{ section.settings.bottom_banner_text }}</div>
+        <div class="mobile-view-banner-bottom-announcement">{{ section.settings.mobile_view_bottom_banner_text }}</div>
+   </div>
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
