@@ -501,51 +501,50 @@
         );
         if (variant) {
           console.log('adding product to cart');
-          // var xhr = new XMLHttpRequest();
-          // xhr.open('POST', '/cart/add.js', true);
-          // xhr.setRequestHeader('Content-Type', 'application/json');
-          // xhr.onreadystatechange = function() {
-          //   if (xhr.readyState === 4 && xhr.status === 200) {
-          //     // Open the cart notification
-          //     var cartNotification = document.querySelector('cart-notification');
-          //     if (cartNotification) {
-          //       cartNotification.open();
-          //     }
-          //     popup.style.display = 'none';
-          //   } else if (xhr.readyState === 4) {
-          //     console.error('Error:', xhr.responseText);
-          //     alert('Failed to add to cart.');
-          //   }
-          // };
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', '/cart/add.js', true);
+          xhr.setRequestHeader('Content-Type', 'application/json');
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              // Open the cart notification
+              var cartNotification = document.querySelector('cart-notification');
+              if (cartNotification) {
+                cartNotification.open();
+              }
+              popup.style.display = 'none';
+            } else if (xhr.readyState === 4) {
+              console.error('Error:', xhr.responseText);
+              alert('Failed to add to cart.');
+            }
+          };
 
-          // xhr.send(JSON.stringify({
-          //   id: variant.id,
-          //   quantity: 1
-          // }));
+          xhr.send(JSON.stringify({
+            id: variant.id,
+            quantity: 1
+          }));
         } else {
           alert('Please select a valid variant.');
         }
 
         if(selectedColor === 'Black' && selectedSize === 'M') {
             console.log('adding another product to cart');
-            var xhr2 = new XMLHttpRequest();
-            xhr2.open('POST', '/cart/add.js', true);
-            xhr2.setRequestHeader('Content-Type', 'application/json');
-            xhr2.onreadystatechange = function() {
-              if (xhr2.readyState === 4 && xhr2.status === 200) {
+            xhr.open('POST', '/cart/add.js', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
                 // Open the cart notification
                 var cartNotification = document.querySelector('cart-notification');
                 if (cartNotification) {
                   cartNotification.open();
                 }
                 popup.style.display = 'none';
-              } else if (xhr2.readyState === 4) {
-                console.error('Error:', xhr2.responseText);
+              } else if (xhr.readyState === 4) {
+                console.error('Error:', xhr.responseText);
                 alert('Failed to add to cart.');
               }
             };
   
-            xhr2.send(JSON.stringify({
+            xhr.send(JSON.stringify({
               id: 44759342645380,
               quantity: 1
             }));
