@@ -177,6 +177,7 @@
   width: 60%;
 }
 
+/* stlying for mobile view */
 @media (max-width: 376px) {
   .top-bar {
     display: none;
@@ -243,6 +244,7 @@
   }
 }
 
+/* styling for desktop view */
 @media (min-width: 376px) {
   .top-bar,
   .banner {
