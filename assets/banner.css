@@ -1,301 +1,277 @@
+.top-bar,
+.banner-bottom-bar,
+.mobile-view-banner-bottom-announcement,
+.banner-bottom-announcement {
+  background: red;
+  color: black;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar-extra,
+.top-bar-mobile {
+  display: none;
+}
+
+.top-bar .top-bar-company-name {
+  font-family: Jost;
+  font-weight: 500;
+  font-size: 26px;
+  margin: 0 40px;
+}
+
+.top-bar-mobile-company-name {
+  font-family: Jost;
+  font-weight: 500;
+  font-size: 22px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.mobile-view-banner-bottom-announcement,
+.banner-bottom-announcement {
+  text-align: center;
+}
+
+.top-bar-announcement {
+  font-size: 16px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.top-bar-button,
+.banner-button {
+  width: 220px;
+  height: 50px;
+  background-size: 200% 100%;
+  background-position: right bottom;
+  font-family: Jost;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.5rem 0.5rem 0.5rem 4.5rem;
+  transition: background-position 200ms ease-out;
+}
+
+.top-bar-button {
+  background: linear-gradient(to right, #000 50%, #FFF544 50%);
+  color: #000;
+  margin: 10px 30px;
+}
+
+.banner-button {
+  background: linear-gradient(to right, #FFF544 50%, #000 50%);
+  color: white;
+}
+
+.top-bar-button:hover,
+.banner-button:hover {
+  background-position: left bottom;
+}
+
+.top-bar-button:hover {
+  color: white;
+}
+
+.banner-button:hover {
+  color: black;
+}
+
+.top-bar-content {
+  justify-content: center;
+}
+
+.more-options {
+  cursor: pointer;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.top-bar-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  background: #F2F2F2;
+}
+
+.top-bar-extra,
+.top-bar-extra.show {
+  background: #F2F2F2;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-bar-extra.show {
+  display: flex;
+}
+
+.banner {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.banner-content {
+  font-family: Jost;
+  min-width: 515px;
+  padding-bottom: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.banner-content h1 {
+  font-family: Jost;
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 70px;
+  margin: 0;
+}
+
+.banner-content p {
+  font-family: Jost;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: left;
+}
+
+.top-bar-button::after,
+.banner-button::after {
+  content: "→";
+  margin-left: 20px;
+  font-size: 38px;
+  transform: scaleY(0.7);
+}
+
+#banner-img {
+  width: 60%;
+}
+
+@media (max-width: 376px) {
   .top-bar {
-    background: #F5F5F5;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    }
-
-  .banner-bottom-bar {
-    background: #F5F5F5;
-  }
-
-  .top-bar-extra,
-  .top-bar-mobile{
     display: none;
   }
 
-  
-      
-    .top-bar .top-bar-company-name {
-        font-family: Jost;
-        color: black;
-        font-weight: 500;
-        margin: 0px 40px;
-        font-size: 26px;
-    }
-
-  .top-bar-mobile-company-name {
-    font-weight: 500;
-    flex-grow: 1;
-    text-align: center;
-    font-size: 22px;
-    font-family: 'Jost';
-    color: black;
+  #banner-top-img {
+    display: none;
   }
 
-  .mobile-view-banner-bottom-announcement,
-  .banner-bottom-announcement {
-    background: #F5F5F5;
-    color: black;
-    text-align: center;
-  }
-
-    .top-bar-announcement {
-        color: black;
-        font-style: normal;
-        font-size: 16px;
-        line-height: 36px;
-        /* identical to box height, or 84% */
-        display: flex;
-        align-items: center;
-        text-align: center;
-    }
-
-    .top-bar-button {
-        width: 220px;
-        height: 50px;
-        background: linear-gradient(to right, #000 50%, #FFF544 50%);
-        background-size: 200% 100%;
-        background-position: right bottom;
-        margin: 10px 30px;
-        font-family: Jost;
-        font-style: normal;
-        font-weight: 300;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #000000;
-        padding: 0.5rem 0.5rem 0.5rem 4.5rem;
-        transition: background-position 200ms ease-out;
-    }
-
-
-  .top-bar-button:hover {
-    background-position: left bottom;
-    color: white;
-  }
-   
-        .top-bar-content {
-          justify-content: center;
-        }
-        .more-options {
-          cursor: pointer;
-          font-size: 20px;
-          margin-bottom: 5px;
-        }
-        .top-bar-mobile {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px;
-          width: 100%;
-          background: #F2F2F2;
-        }
-        .top-bar-extra {
-          background: #F2F2F2;
-          display: none;
-          flex-direction: column;
-          align-items: center;
-        }
-        .top-bar-extra.show {
-          display: flex;
-        }
-      }
-  .banner {
+  #banner-img {
+    width: auto;
+    height: 100%;
     position: relative;
-    text-align: center;
-    color: white;
+    left: 50%;
+    transform: translateX(-50%);
   }
-  .banner-content {
+
+  .banner-container,
+  .mobile-view-banner-container {
+    display: block;
+  }
+
+  .mobile-view-banner-bottom-announcement {
+    padding: 3px;
     font-family: Jost;
-    min-width: 515px;
-    padding-bottom: 40px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
+    font-weight: 400;
+    font-size: 13px;
+  }
+
+  .banner-bottom-announcement,
+  .banner-container {
+    display: none;
+  }
+
+  .banner-content {
+    min-width: auto;
+    align-items: center;
+    padding: 0;
   }
 
   .banner-content h1 {
-    margin: 0px;
-    font-family: Jost;
-    font-weight: 500;
-    font-size: 70px;
-    line-height: 70px;
-    letter-spacing: 0px;
+    font-size: 30px;
+    line-height: 30px;
+    margin: 30px 10px 10px 10px;
   }
+
   .banner-content p {
-    color: black;
-    text-align: left;
+    font-size: 16px;
+    line-height: 20.8px;
+    text-align: center;
+    width: 340px;
+    margin: 10px;
+  }
+
+  .banner-image-button-container {
+    position: relative;
+  }
+
+  .banner-button {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+}
+
+@media (min-width: 376px) {
+  .top-bar,
+  .banner {
+    min-width: 1400px;
+  }
+
+  .top-bar {
+    display: flex;
+  }
+
+  .top-bar-company-name {
+    font-size: 24px;
+  }
+
+  .top-bar-extra,
+  .top-bar-extra.show,
+  .top-bar-mobile,
+  .mobile-view-banner-bottom-announcement,
+  .mobile-view-banner-container {
+    display: none;
+  }
+
+  #banner-top-img {
+    width: 100%;
+    height: fit-content;
+  }
+
+  #banner-img {
+    flex: 2;
+    height: auto;
+    transform: translate(-21px, -3px) scale(1.05);
+  }
+
+  .banner-container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 5rem;
+    overflow: hidden;
+  }
+
+  .banner-bottom-announcement {
+    display: block;
     font-family: Jost;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0px;
-
+    text-align: center;
   }
-  .banner-button {
-        width: 220px;
-        height: 50px;
-        background: linear-gradient(to right, #FFF544 50%, #000 50%);
-        background-size: 200% 100%;
-        background-position: right bottom;
-        font-family: Jost;
-        font-style: normal;
-        font-weight: 300;
-        /* identical to box height, or 128% */
-        display: flex;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;      
-        text-decoration: none;
-        color: white;
-        padding: 0.5rem 0.5rem 0.5rem 4.5rem;;
-        transition: background-position 200ms ease-out;
-    }
-
-
-  .banner-button:hover {
-    background-position: left bottom;
-    color: black;
-  }
-  .top-bar-button::after,
-  .banner-button::after {
-    content: '→';
-    margin-left: 20px;
-    font-size: 38px;
-    transform: scaleY(0.7);
-  }
-  #banner-img {
-    width: 60%
-  }
- @media (max-width: 376px) {
-    .top-bar {
-      display: none;
-    }
-
-   #banner-top-img {
-        display: none;
-    }
-
-    #banner-img {
-        width: auto;
-        height: 100%;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-   .banner-container {
-     display: block;
-   }
-
-   .mobile-view-banner-bottom-announcement{
-      display: block;
-        padding: 3px;
-        font-family: Jost;
-        font-weight: 400;
-        font-size: 13px;
-        letter-spacing: 0px;
-        text-align: center;
-   }
-   .banner-bottom-announcement{
-     display: none;
-   }
-   .mobile-view-banner-container {
-     display: block;
-   }
-   .banner-container {
-     display: none;
-   }
-   .banner-content {
-       min-width: auto;
-        display: flex;
-        align-items: center;
-        padding: 0px;
-     }
-     .banner-content h1 {
-       font-family: Jost;
-      font-weight: 500;
-        font-size: 30px;
-        line-height: 30px;
-        letter-spacing: 0px;
-       margin: 30px 10px 10px 10px;
-    }
-     .banner-content p {
-       margin: 10px;
-        /* font-family: Jost; */
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 20.8px;
-        letter-spacing: 0px;
-        text-align: center;
-        width: 340px;
-        text-align: center;
-     }
-   .banner-image-button-container {
-      position: relative;
-    }
-   .banner-button {
-        position: absolute;
-        bottom: 10%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.85);
-    }
-   
-   
- }
-
-   @media (min-width: 376px) {
-    .top-bar {
-      display: flex;
-      min-width: 1400px;
-    }
-     
-    .banner {
-        min-width: 1400px;
-    }
-
-     .top-bar-company-name {
-      font-size: 24px;
-     }
-    .top-bar-extra,
-    .top-bar-extra.show,
-    .top-bar-mobile {
-      display: none;
-    }
-    #banner-top-img {
-        width: 100%;
-        height: fit-content;
-      }
-    #banner-img {
-        flex: 2;
-        height: auto;
-        transform: translate(-21px, -3px) scale(1.05);
-    }
-
-    .banner-container {
-      display: flex;
-      gap: 10px;
-      justify-content: space-between;
-      padding-left: 5rem;
-      overflow: hidden;
-    }
-     .mobile-view-banner-bottom-announcement{
-     display: none;
-   }
-   .banner-bottom-announcement{
-     display: block;
-      font-family: Jost;
-      font-weight: 400;
-      letter-spacing: 0px;
-      text-align: center;
-   }
-    .mobile-view-banner-container {
-     display: none;
-   }
-  }
+}
