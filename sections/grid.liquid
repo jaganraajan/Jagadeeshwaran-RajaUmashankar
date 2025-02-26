@@ -485,11 +485,11 @@
       var colorText = selectedColorElement.querySelector('.color-text');
       console.log('in add to cart');
       var selectedColor = colorText.textContent;
-      var selectedSize = popupSizes.value;
+      var selectedSize = popupSizes.querySelector('.dropdown-button').textContent;
       var addAnotherProduct = false;
       console.log(selectedColor);
       console.log(selectedSize);
-      if (selectedColor && selectedSize) {
+      if (selectedColor && selectedSize && selectedSize.length < 3) {
         var variant = product.variants.find(variant => 
           variant.option1 === selectedSize && variant.option2 === selectedColor
         );
