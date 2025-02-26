@@ -415,27 +415,27 @@
         // Handle add to cart
       addToCartButton.onclick = function() {
         console.log(product);
-        var selectedColorElement = document.querySelector('.color-option.selected');
+        // var selectedColorElement = document.querySelector('.color-option.selected');
       
-        if(!selectedColorElement) {
-          alert('Please select a valid color.');
-        }
+        // if(!selectedColorElement) {
+        //   alert('Please select a valid color.');
+        // }
   
-        var colorText = selectedColorElement.querySelector('.color-text');
-        console.log('in add to cart click ');
+        // var colorText = selectedColorElement.querySelector('.color-text');
+        // console.log('in add to cart click ');
         
-        var selectedColor = colorText.textContent;
-        var selectedSize = popupSizes.querySelector('.dropdown-button').textContent;
-        var variant;
-        console.log(selectedColor);
-        console.log(selectedSize);
-        console.log(selectedSize.length < 3);
-        if (selectedColor && selectedSize && selectedSize.length < 3) {
-          variant = product.variants.find(variant => 
-            variant.option1 === selectedSize && variant.option2 === selectedColor
-          );
-          addToCart(variant.id);
-        }
+        // var selectedColor = colorText.textContent;
+        // var selectedSize = popupSizes.querySelector('.dropdown-button').textContent;
+        // var variant;
+        // console.log(selectedColor);
+        // console.log(selectedSize);
+        // console.log(selectedSize.length < 3);
+        // if (selectedColor && selectedSize && selectedSize.length < 3) {
+        //   variant = product.variants.find(variant => 
+        //     variant.option1 === selectedSize && variant.option2 === selectedColor
+        //   );
+        //   addToCart(variant.id);
+        // }
       };
 
       popup.style.display = 'flex';
