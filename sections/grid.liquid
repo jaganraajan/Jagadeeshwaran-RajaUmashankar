@@ -497,7 +497,7 @@
       console.log(selectedSize.length < 3);
       if (selectedColor && selectedSize && selectedSize.length < 3) {
         var variant = product.variants.find(variant => 
-          variant.option1 === selectedSize && variant.option2 === selectedColor.textContent
+          variant.option1 === selectedSize && variant.option2 === selectedColor
         );
         console.log(variant);
         console.log(product.variants);
