@@ -480,6 +480,29 @@
       }
     }
 
+    function addAdditionalItemToCart() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/cart/add.js', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Open the cart notification
+          var cartNotification = document.querySelector('cart-notification');
+          if (cartNotification) {
+            cartNotification.open();
+          }
+          popup.style.display = 'none';
+        } else if (xhr.readyState === 4) {
+          console.error('Error:', xhr.responseText);
+          alert('Failed to add additional item to cart.');
+        }
+      };
+      xhr.send(JSON.stringify({
+        id: 44759342645380,
+        quantity: 1
+      }));
+    }
+
     function addToCart(product) {
       var selectedColorElement = document.querySelector('.color-option.selected');
       
@@ -527,27 +550,8 @@
         }
 
         if(selectedColor === 'Black' && selectedSize === 'M') {
-            console.log('adding another product to cart');
-            xhr.open('POST', '/cart/add.js', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.onreadystatechange = function() {
-              if (xhr.readyState === 4 && xhr.status === 200) {
-                // Open the cart notification
-                var cartNotification = document.querySelector('cart-notification');
-                if (cartNotification) {
-                  cartNotification.open();
-                }
-                popup.style.display = 'none';
-              } else if (xhr.readyState === 4) {
-                console.error('Error:', xhr.responseText);
-                alert('Failed to add to cart.');
-              }
-            };
-  
-            xhr.send(JSON.stringify({
-              id: 44759342645380,
-              quantity: 1
-            }));
+            console.log('add additional item');
+            addAdditionalItemToCart();
         }
       } else {
         alert('Please select a color and size.');
