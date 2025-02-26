@@ -373,12 +373,13 @@
     var dropdownContent = document.querySelector('.dropdown-content');
 
 
+    // Function to show the product popup
     window.showProductPopup = function(product) {
       popupImage.src = product.featured_image;
       popupImage.alt = product.title;
       popupTitle.textContent = product.title;
       popupDescription.innerHTML = product.description;
-      popupPrice.textContent = (product.price / 100).toFixed(2)  + '€'; ; // Convert cents to dollars
+      popupPrice.textContent = (product.price / 100).toFixed(2)  + '€'; ; // Convert cents to euros and add euro symbol
 
       // Populate color options
       popupColors.innerHTML = '';
@@ -405,18 +406,6 @@
           colorOptions.forEach(function(opt) { opt.classList.remove('selected'); });
           option.classList.add('selected');
 
-          // Update background color of the color-text
-          // const colorText = this.querySelector('.color-text');
-
-          // colorText.addEventListener('click', function() {
-          // if (this.classList.contains('selected')) {
-          //   colorText.classList.toggle('selected')
-          //   colorText.style.color = 'white';
-            
-          // } else {
-          //   colorText.style.backgroundColor = 'white';
-          //   colorText.style.color = 'black';
-          // }
           updatePrice(product);
       })});
 
@@ -425,21 +414,20 @@
         if (event.target.tagName === 'DIV') {
           var size = event.target.getAttribute('data-value');
           dropdownButton.textContent = size;
-          console.log(size);
+          updatePrice(product);
         }
-        {% comment %} updatePrice(product); {% endcomment %}
       });
 
 
-        // Handle add to cart
+      // Handle add to cart
       addToCartButton.onclick = function() {
-        console.log(product);
         addToCart(product);
       };
 
       popup.style.display = 'flex';
     };
 
+    // Close popup on close button click
     popupClose.addEventListener('click', function() {
       popup.style.display = 'none';
     });
@@ -452,7 +440,7 @@
 
     // Handle dropdown arrow direction
     popupSizes.addEventListener('click', function() {
-        popupSizes.classList.toggle('open');
+      popupSizes.classList.toggle('open');
       console.log('in dropdown click');
       console.log(event.target.tagName);
       console.log(event.target.getAttribute('data-value'));
@@ -469,24 +457,10 @@
         }
       });
 
-      // dropdownButton.addEventListener('click', function() {
-      //   // dropdown.classList.toggle('show');
-      //   console.log('in dropdown click');
-        
-      //   if (popupSizes.classList.contains('show')) {
-      //       dropdownContent.style.display = 'block'; // Or 'flex', 'grid', etc.
-      //   } else {
-      //       dropdownContent.style.display = 'none';
-      //   }
-      // });
-
+    // Function to update the price based on selected options
     function updatePrice(product) {
       var selectedColorElement = document.querySelector('.color-option.selected');
       var colorText = selectedColorElement.querySelector('.color-text');
-      console.log('in updatePrice');
-      console.log(popupSizes);
-      console.log(popupSizes.querySelector('.dropdown-button').textContent);
-      console.log(colorText.textContent);
       var selectedColor = colorText.textContent;
       var selectedSize = popupSizes.value;
       if (selectedColor && selectedSize) {
@@ -494,11 +468,12 @@
           variant.option1 === selectedSize && variant.option2 === selectedColor.getAttribute('data-color')
         );
         if (variant) {
-          popupPrice.textContent = (variant.price / 100).toFixed(2) + '€'; ; // Convert cents to dollars
+          popupPrice.textContent = (variant.price / 100).toFixed(2) + '€'; ; // Convert cents to euros and add euro symbol
         }
       }
     }
 
+    // Function to add the selected product to the cart
     function addToCart(product) {
       var selectedColorElement = document.querySelector('.color-option.selected');
       
@@ -506,20 +481,16 @@
         alert('Please select a valid color.');
       }
 
-      var colorText = selectedColorElement.querySelector('.color-text');
-      console.log('in add to cart');
-      
+      var colorText = selectedColorElement.querySelector('.color-text'); 
       var selectedColor = colorText.textContent;
       var selectedSize = popupSizes.querySelector('.dropdown-button').textContent;
-      console.log(selectedColor);
-      console.log(selectedSize);
-      console.log(selectedSize.length < 3);
+
+      // Add to cart only if the selected size and color are valid
       if (selectedColor && selectedSize && selectedSize.length < 3) {
         var variant = product.variants.find(variant => 
           variant.option1 === selectedSize && variant.option2 === selectedColor
         );
-        console.log(variant);
-        console.log(product.variants);
+        // Add the selected variant to the cart
         if (variant) {
           fetch('/cart/add.js', {
             method: 'POST',
@@ -538,10 +509,10 @@
               if (cartNotification) {
                 cartNotification.open();
               }
-              // Add another item with variant ID 44759342645380 if size is M and color is Black
+              // Add “Soft Winter Jacket” to cart when any product with variant options Black and Medium is added 
               if (selectedSize === 'M' && selectedColor === 'Black') {
                 console.log('adding new item');
-                addAdditionalItemToCart();
+                addSoftWinterJacketItemToCart();
               } else {
                 popup.style.display = 'none';
               }
@@ -561,7 +532,7 @@
       }
     }
   
-    function addAdditionalItemToCart() {
+    function addSoftWinterJacketItemToCart() {
       fetch('/cart/add.js', {
         method: 'POST',
         headers: {
@@ -586,7 +557,7 @@
       })
       .catch(error => {
         console.error('Error:', error);
-        alert('Failed to add additional item to cart.');
+        alert('Failed to add Soft Winter Jacket item to cart.');
       });
     }
   });
