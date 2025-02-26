@@ -462,9 +462,10 @@
       // });
 
     function updatePrice(product) {
-      var selectedColor = document.querySelector('.color-option.selected');
-      var colorText = selectedColor.querySelector('.color-text');
-      console.log(colorText);
+      var selectedColorElement = document.querySelector('.color-option.selected');
+      var colorText = selectedColorElement.querySelector('.color-text');
+      console.log(colorText.textContent);
+      var selectedColor = colorText.textContent;
       var selectedSize = popupSizes.value;
       if (selectedColor && selectedSize) {
         var variant = product.variants.find(variant => 
@@ -477,10 +478,11 @@
     }
 
     function addToCart(product) {
-      {% comment %} var selectedColor = document.querySelector('.color-option.selected');
-      var selectedSize = popupSizes.value; {% endcomment %}
-      var selectedColor = 'Black';
-      var selectedSize = 'M';
+      var selectedColorElement = document.querySelector('.color-option.selected');
+      var colorText = selectedColorElement.querySelector('.color-text');
+      console.log('in add to cart');
+      var selectedColor = colorText.textContent;
+      var selectedSize = popupSizes.value;
       var addAnotherProduct = false;
       console.log(selectedColor);
       console.log(selectedSize);
