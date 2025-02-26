@@ -96,42 +96,7 @@
     background-position: left bottom;
     color: black;
 }
-/* .top-bar-button,
-.banner-button {
-  width: 220px;
-  height: 50px;
-  background-size: 200% 100%;
-  background-position: right bottom;
-  font-family: Jost;
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 0.5rem 0.5rem 0.5rem 4.5rem;
-}
 
-.top-bar-button {
-  background: linear-gradient(to right, #000 50%, #FFF544 50%);
-  color: #000;
-  margin: 10px 30px;
-}
-
-.banner-button {
-  background: linear-gradient(to right, #FFF544 50%, #000 50%);
-  color: white;
-}
-
-.top-bar-button:hover,
-.banner-button:hover {
-  background-position: left bottom;
-}
-
-.top-bar-button:hover {
-  color: white;
-}
- */
 .banner-button:hover {
   color: black;
 }
