@@ -415,10 +415,30 @@
         // Handle add to cart
       addToCartButton.onclick = function() {
         console.log(product);
-        addToCart(product);
+        var selectedColorElement = document.querySelector('.color-option.selected');
+      
+        if(!selectedColorElement) {
+          alert('Please select a valid color.');
+        }
+  
+        var colorText = selectedColorElement.querySelector('.color-text');
+        console.log('in add to cart click ');
+        
+        var selectedColor = colorText.textContent;
+        var selectedSize = popupSizes.querySelector('.dropdown-button').textContent;
+        var variant;
+        console.log(selectedColor);
+        console.log(selectedSize);
+        console.log(selectedSize.length < 3);
+        if (selectedColor && selectedSize && selectedSize.length < 3) {
+          variant = product.variants.find(variant => 
+            variant.option1 === selectedSize && variant.option2 === selectedColor
+          );
+          addToCart(variant.id);
+        }
       };
 
-      popup.style.display = 'flex';
+      // popup.style.display = 'flex';
     };
 
     popupClose.addEventListener('click', function() {
@@ -480,27 +500,9 @@
       }
     }
 
-    function addToCart(product) {
-      var selectedColorElement = document.querySelector('.color-option.selected');
-      
-      if(!selectedColorElement) {
-        alert('Please select a valid color.');
-      }
-
-      var colorText = selectedColorElement.querySelector('.color-text');
-      console.log('in add to cart');
-      
-      var selectedColor = colorText.textContent;
-      var selectedSize = popupSizes.querySelector('.dropdown-button').textContent;
-      console.log(selectedColor);
-      console.log(selectedSize);
-      console.log(selectedSize.length < 3);
-      if (selectedColor && selectedSize && selectedSize.length < 3) {
-        var variant = product.variants.find(variant => 
-          variant.option1 === selectedSize && variant.option2 === selectedColor
-        );
-        if (variant) {
-          console.log('adding product to cart');
+    function addToCart(variantId) {
+        if (variantId) {
+          console.log('adding product to cart' + variantId);
           var xhr = new XMLHttpRequest();
           xhr.open('POST', '/cart/add.js', true);
           xhr.setRequestHeader('Content-Type', 'application/json');
@@ -526,32 +528,30 @@
           alert('Please select a valid variant.');
         }
 
-        if(selectedColor === 'Black' && selectedSize === 'M') {
-            console.log('adding another product to cart');
-            var xhr2 = new XMLHttpRequest();
-            xhr2.open('POST', '/cart/add.js', true);
-            xhr2.setRequestHeader('Content-Type', 'application/json');
-            xhr2.onreadystatechange = function() {
-              if (xhr2.readyState === 4 && xhr2.status === 200) {
-                // Open the cart notification
-                var cartNotification = document.querySelector('cart-notification');
-                if (cartNotification) {
-                  cartNotification.open();
-                }
-                popup.style.display = 'none';
-              } else if (xhr2.readyState === 4) {
-                console.error('Error:', xhr2.responseText);
-                alert('Failed to add to cart.');
-              }
-            };
+        // if(selectedColor === 'Black' && selectedSize === 'M') {
+        //     console.log('adding another product to cart');
+        //     var xhr2 = new XMLHttpRequest();
+        //     xhr2.open('POST', '/cart/add.js', true);
+        //     xhr2.setRequestHeader('Content-Type', 'application/json');
+        //     xhr2.onreadystatechange = function() {
+        //       if (xhr2.readyState === 4 && xhr2.status === 200) {
+        //         // Open the cart notification
+        //         var cartNotification = document.querySelector('cart-notification');
+        //         if (cartNotification) {
+        //           cartNotification.open();
+        //         }
+        //         popup.style.display = 'none';
+        //       } else if (xhr2.readyState === 4) {
+        //         console.error('Error:', xhr2.responseText);
+        //         alert('Failed to add to cart.');
+        //       }
+        //     };
   
-            xhr2.send(JSON.stringify({
-              id: 44759342645380,
-              quantity: 1
-            }));
-        }
-      } else {
-        alert('Please select a color and size.');
+        //     xhr2.send(JSON.stringify({
+        //       id: 44759342645380,
+        //       quantity: 1
+        //     }));
+        // }
       }
     }
   });
