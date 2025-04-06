@@ -1,0 +1,80 @@
+<!-- filepath: sections/grid.liquid -->
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "number",
+      "id": "products_per_row",
+      "label": "Products per row",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "products_limit",
+      "label": "Number of products to show",
+      "default": 6
+    }
+  ]
+}
+{% endschema %}
+<!-- Link to the external CSS and JS files -->
+<link rel="stylesheet" href="{{ 'grid.css' | asset_url }}">
+<script src="{{ 'grid.js' | asset_url }}"></script>
+
+{% assign collection = collections[section.settings.collection] %}
+{% if collection %}
+    <div id="product-grid-section">
+        <div class="product-grid-header">Tisso vison in the wild</div>
+        <div class="product-grid">
+        {% assign reversed_products = collection.products | reverse %}
+        {% for product in reversed_products %}
+          <div class="product-grid-item" style="width: {{ 100 | divided_by: section.settings.products_per_row }}%" onclick="showProductPopup({{ product | json | escape }});">
+            <img width=920 height=943 src="{{ product.featured_media | image_url: width: 920, height: 943 }}" alt="{{ product.title }}">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  
+{% else %}
+  <p>No products were found in this collection.</p>
+{% endif %}
+
+<!-- Pop-up Box -->
+<div id="product-popup" class="product-popup">
+  <div class="product-popup-content">
+    <span class="product-popup-close">&times;</span>
+    <div class='product-details-container'>
+        <div class='product-image-container'>
+            <img id="popup-product-image" width=300 height=320 alt="">
+        </div>
+        <div class='product-info-container'>
+            <h2 id="popup-product-title"></h2>
+            <p id="popup-product-price"></p>
+            <p id="popup-product-description"></p>
+            
+        </div>
+    </div>
+    <div id="popup-product-options">
+      <h2>Color</h2>
+      <div id="popup-product-colors"></div>
+      <h2>Size</h2>
+      <div id="popup-product-sizes">
+        <div class="dropdown-button">Choose your size</div>
+        <div class="dropdown-content">
+          <div data-value="XS">XS</div>
+          <div data-value="S">S</div>
+          <div data-value="M">M</div>
+          <div data-value="L">L</div>
+        </div>
+      </div>
+    </div>
+    <button id="add-to-cart-button">ADD TO CART</button>
+  </div>
+</div>

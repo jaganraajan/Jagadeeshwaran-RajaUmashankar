@@ -1,0 +1,22 @@
+{
+    "sections": {
+      "banner": {
+        "type": "banner",
+        "settings": {
+          "padding_top": 36,
+          "padding_bottom": 36
+        }
+      },
+      "grid": {
+        "type": "grid",
+        "settings": {
+          "padding_top": 36,
+          "padding_bottom": 36
+        }
+      }
+    },
+    "order": [
+      "banner",
+      "grid"
+    ]
+  }

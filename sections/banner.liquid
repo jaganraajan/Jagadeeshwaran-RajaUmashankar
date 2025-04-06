@@ -1,0 +1,128 @@
+<!-- filepath: sections/banner.liquid -->
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+    {
+        "type": "text",
+        "id": "company_name",
+        "label": "Top Bar Company Name",
+        "default": "TISSO VISON"
+    },
+    {
+        "type": "text",
+        "id": "top_bar_announcement",
+        "label": "Top Bar Announcement",
+        "default": "Find the ideal gift for your loved ones."
+    },
+    {
+        "type": "text",
+        "id": "top_bar_button_text",
+        "label": "Top Bar Button Text",
+        "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "text",
+      "id": "banner_heading",
+      "label": "Banner Heading",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "text",
+      "id": "banner_subheading",
+      "label": "Banner Subheading",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+        "type": "text",
+        "id": "mobile_view_banner_subheading",
+        "label": "Mobile View Banner Subheading",
+        "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
+    },
+    {
+      "type": "text",
+      "id": "banner_button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+        "type": "text",
+        "id": "bottom_banner_text",
+        "label": "Bottom Banner Text",
+        "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
+    {
+        "type": "text",
+        "id": "mobile_view_bottom_banner_text",
+        "label": "Mobile View Bottom Banner Text",
+        "default": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- Link to the external CSS file -->
+<link rel="stylesheet" href="{{ 'banner.css' | asset_url }}">
+
+{% comment %} displayed only in mobile view {% endcomment %}
+<div class="top-bar-mobile">
+    <span class="more-options">&#9776;</span>
+    <span class="top-bar-mobile-company-name">{{ section.settings.company_name }}</span>
+</div>
+{% comment %} display extra info when more options is selected in mobile view  {% endcomment %}
+<div class="top-bar-extra">
+    <span class="top-bar-announcement">{{ section.settings.top_bar_announcement }}</span>
+    <a href="#product-grid-section" class="top-bar-button">{{ section.settings.top_bar_button_text }}</a>
+</div>
+{% comment %} displayed only in desktop view {% endcomment %}
+<div class="top-bar">
+    <div class="top-bar-company-name">{{ section.settings.company_name }}</div>
+    <div class="top-bar-announcement"> {{ section.settings.top_bar_announcement }}</div>
+    <a href="#product-grid-section" class="top-bar-button">{{ section.settings.top_bar_button_text }}</a>
+</div>
+
+<div class="banner">
+    <img id="banner-top-img" src="{{ 'banner_image_1.svg' | asset_url }}" alt="Banner Image"  width="600" height="400">
+    {% comment %} displayed only in desktop view {% endcomment %}
+    <div class="banner-container">
+        <div class="banner-content">
+            <h1>{{ section.settings.banner_heading }}</h1>
+            <p>{{ section.settings.banner_subheading }}</p>
+            <a href="#product-grid-section" class="banner-button">{{ section.settings.banner_button_text }}</a>
+        </div>
+        <img id="banner-img" src="{{ 'banner_image_2.svg' | asset_url }}" alt="Banner Image" width="600" height="400">
+    </div>
+    {% comment %} displayed only in mobile view {% endcomment %}
+    <div class="mobile-view-banner-container">
+        <div class="banner-content">
+            <h1>{{ section.settings.banner_heading }}</h1>
+            <p>{{ section.settings.mobile_view_banner_subheading }}</p>
+        </div>
+        <div class="banner-image-button-container">
+            <img id="banner-img" src="{{ 'mobile_banner_image.svg' | asset_url }}" alt="Banner Image" width="600" height="400">
+            <a href="#product-grid-section" class="banner-button">{{ section.settings.banner_button_text }}</a>
+        </div>
+   </div>
+   <div class="banner-bottom-bar">
+        <div class="banner-bottom-announcement">{{ section.settings.bottom_banner_text }}</div>
+        <div class="mobile-view-banner-bottom-announcement">{{ section.settings.mobile_view_bottom_banner_text }}</div>
+   </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var moreOptions = document.querySelector('.more-options');
+      var topBarExtra = document.querySelector('.top-bar-extra');
+
+      if (moreOptions) {
+        moreOptions.addEventListener('click', function() {
+          topBarExtra.classList.toggle('show');
+          if (topBarExtra.classList.contains('show')) {
+                moreOptions.textContent = 'x'; // Change to 'x' when open
+            } else {
+                moreOptions.textContent = '☰'; // Change back to hamburger when closed
+            }
+        });
+      }
+    });
+  </script>
